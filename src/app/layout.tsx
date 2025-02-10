@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Provider } from "jotai"; // Import Jotai Provider
+import { Provider } from "jotai";
 import "./globals.css";
 import localFont from "next/font/local";
+import ThemeProvider from "@/components/theme";
 
 const interFont = localFont({
   src: "../static/fonts/Inter-VariableFont_opsz,wght.ttf",
@@ -16,13 +17,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className={`${interFont.variable} antialiased`}>
-        <Provider>{children}</Provider>{" "}
+        <Provider>
+          <ThemeProvider>{children}</ThemeProvider>{" "}
+        </Provider>
       </body>
     </html>
   );

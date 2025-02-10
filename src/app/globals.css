@@ -10,12 +10,11 @@
   --dangerous: #D73434;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --primary: #A4FF66;
-    --foreground: #ededed;
-  }
+/* Apply dark mode styles automatically when html.dark is present */
+html.dark {
+  --background: #0a0a0a;
+  --primary: #A4FF66;
+  --foreground: #ededed;
 }
 
 body {

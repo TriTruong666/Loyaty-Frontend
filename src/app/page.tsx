@@ -3,19 +3,33 @@
 import LoginHeader from "@/components/login-header";
 import { MdEmail } from "react-icons/md";
 import { FaKey } from "react-icons/fa";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { FaCircleCheck } from "react-icons/fa6";
 import Image from "next/image";
 import woman from "@/static/woman-1.jpg";
+import { useAtomValue, useSetAtom } from "jotai";
+import { loginProgressState } from "@/context/homeState";
+import { IoMailUnreadOutline } from "react-icons/io5";
+
 export default function Home() {
+  const progressState = useAtomValue(loginProgressState);
   return (
     <>
       <div className="font-inter relative w-screen h-screen overflow-hidden">
         <LoginHeader />
-        <div className="flex h-full">
-          <Introduce />
-        </div>
+        {progressState === 1 && (
+          <div className="flex h-full">
+            <Introduce />
+            {/* missing image section */}
+          </div>
+        )}
+        {progressState === 2 && (
+          <div className="flex h-full">
+            <EmailVerification />
+            {/* missing image section */}
+          </div>
+        )}
       </div>
     </>
   );
@@ -25,10 +39,10 @@ function Introduce() {
   return (
     <div className="flex flex-col w-[50%] border-r h-full border-gray-400 border-opacity-40 justify-center pl-[150px] gap-y-3">
       <p className="font-semibold 2xl:text-[40px] text-[50px] w-[80%] mt-[70px] 2xl:mt-[5px] bg-[conic-gradient(at_right,_var(--tw-gradient-stops))] from-yellow-600 via-primary to-emerald-50 bg-clip-text text-transparent">
-        Loyaty happy to see you, friends.
+        Loyalty happy to see you, friends.
       </p>
-      <p className="text-normal text-sm 2xl:text-[11px] w-[80%]">
-        Loyaty is a platform that helps pharmaceutical retailers buy in bulk
+      <p className="dark:text-normal text-sm 2xl:text-[11px] w-[80%] text-black">
+        Loyalty is a platform that helps pharmaceutical retailers buy in bulk
         from trusted suppliers. We offer competitive pricing, a seamless
         ordering process, and reliable product quality.
       </p>
@@ -38,12 +52,12 @@ function Introduce() {
       <div className="pt-4 2xl:pt-2 mt-[20px] 2xl:mb-[10px] mb-[60px]">
         <Participants />
       </div>
-      <p className="text-normal text-[11px] 2xl:text-[9px] w-[80%] font-light 2xl:mb-[50px] mb-[150px]">
-        Loyaty™ is a trademarked platform dedicated to helping pharmaceutical
+      <p className="dark:text-normal text-black text-[11px] 2xl:text-[9px] w-[80%] font-light 2xl:mb-[50px] mb-[150px]">
+        Loyalty™ is a trademarked platform dedicated to helping pharmaceutical
         retailers purchase in bulk efficiently. Our brand name, logo, and
         associated materials are legally protected, ensuring authenticity and
         trust in the industry. Unauthorized use, reproduction, or imitation of
-        Loyaty’s intellectual property is strictly prohibited.
+        Loyalty’s intellectual property is strictly prohibited.
       </p>
     </div>
   );
@@ -51,7 +65,10 @@ function Introduce() {
 
 function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
-
+  const setProgress = useSetAtom(loginProgressState);
+  const handleSubmit = () => {
+    setProgress(2);
+  };
   return (
     <div className="flex flex-col gap-y-2">
       {/* Email Field */}
@@ -97,14 +114,15 @@ function LoginForm() {
           )}
         </button>
       </div>
-      <p className="text-[11px] 2xl:text-[9px] mt-1 text-dangerous">
+      {/* <p className="text-[11px] 2xl:text-[9px] mt-1 text-dangerous">
         Wrong email or password
-      </p>
+      </p> */}
       {/* Submit Button */}
       <button
         className="mt-6 2xl:mt-3 2xl:text-sm w-[60%] border py-2 rounded-md transition-all duration-300 bg-gray-300 text-gray-500
              disabled:bg-[#141414] disabled:text-gray-600 disabled:border-gray-400 disabled:border-opacity-20
-             enabled:bg-white enabled:text-black enabled:hover:bg-black enabled:hover:text-white"
+             enabled:bg-primary enabled:text-black enabled:hover:bg-black enabled:hover:text-white enabled:border-transparent enabled:hover:border-white"
+        onClick={handleSubmit}
       >
         Continue
       </button>
@@ -148,9 +166,97 @@ function Participants() {
 
       {/* Verified Message */}
       <div className="flex items-center gap-x-3 mt-2">
-        <FaCircleCheck className="text-normal 2xl:text-[14px]" />
-        <p className="text-sm text-normal 2xl:text-[12px]">
-          +36 retailers became members of Loyaty.
+        <FaCircleCheck className="dark:text-normal text-black 2xl:text-[14px]" />
+        <p className="text-sm dark:text-normal text-black 2xl:text-[12px]">
+          +36 retailers became members of Loyalty.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function EmailVerification() {
+  const [otp, setOtp] = useState(["", "", "", "", "", ""]);
+  const inputRefs = useRef<HTMLInputElement[]>([]);
+
+  const handleChange = (index: number, value: string) => {
+    if (!/^\d?$/.test(value)) return;
+
+    const newOtp = [...otp];
+    newOtp[index] = value;
+    setOtp(newOtp);
+
+    if (value && index < 5) {
+      inputRefs.current[index + 1]?.focus();
+    }
+  };
+
+  const handleKeyDown = (
+    index: number,
+    e: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    if (e.key === "Backspace" && !otp[index] && index > 0) {
+      inputRefs.current[index - 1]?.focus();
+    }
+  };
+
+  const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const pasteData = e.clipboardData.getData("text").slice(0, 6).split("");
+    const newOtp = pasteData.concat(Array(6 - pasteData.length).fill(""));
+    setOtp(newOtp);
+    inputRefs.current[newOtp.findIndex((val) => val === "")]?.focus();
+  };
+
+  return (
+    <div className="flex flex-col w-full justify-center items-center gap-y-6 min-h-screen bg-black text-white p-4">
+      {/* Icon & Tiêu đề */}
+      <IoMailUnreadOutline className="text-[60px]" />
+      <p className="text-[40px] font-semibold">Please check your email.</p>
+      {/* OTP Input Fields */}
+      <div className="flex space-x-6 p-4">
+        {otp.map((digit, index) => (
+          <input
+            key={index}
+            ref={(el) => {
+              if (el) inputRefs.current[index] = el;
+            }}
+            type="text"
+            maxLength={1}
+            value={digit}
+            onChange={(e) => handleChange(index, e.target.value)}
+            onKeyDown={(e) => handleKeyDown(index, e)}
+            onPaste={handlePaste}
+            className="w-14 h-14 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg text-center 
+              text-2xl font-semibold text-white shadow-md shadow-black/50 
+              focus:outline-none focus:ring-2 focus:ring-white transition-all duration-300"
+          />
+        ))}
+      </div>
+      <button
+        className="mt-6 2xl:mt-3 2xl:text-sm w-[30%] border py-2 rounded-md transition-all duration-300 bg-gray-300 text-gray-500
+             disabled:bg-[#141414] disabled:text-gray-600 disabled:border-gray-400 disabled:border-opacity-20
+             enabled:bg-primary enabled:text-black enabled:hover:bg-black enabled:hover:text-white enabled:border-transparent enabled:hover:border-white"
+      >
+        Verify OTP
+      </button>
+      <div className="max-w-md text-center mb-[90px]">
+        <p className="text-normal text-sm">
+          We've sent a 6-digit code to{" "}
+          <span className="text-primary">email123@gmail.com</span>. Enter OTP to
+          verify your ownership and continue.
+        </p>
+      </div>
+      <div className="flex flex-col items-center">
+        <p className="text-normal text-[11px]">
+          It may take a few minutes for the email to arrive. Double-check your
+          spam folder.
+        </p>
+        <p className="text-normal text-[11px]">
+          Didn't get it?{" "}
+          <span className="text-white cursor-pointer hover:underline">
+            Resend Email.
+          </span>
         </p>
       </div>
     </div>
