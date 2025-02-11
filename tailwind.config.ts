@@ -11,6 +11,11 @@ export default {
     extend: {
       fontFamily: {
         inter: ["var(--font-inter)"],
+        open: ["var(--font-open-sans)"],
+        monse: ["var(--font-monse)"],
+      },
+      borderColor: {
+        "gray-400-40": "rgba(156, 163, 175, 0.4)",
       },
       colors: {
         background: "var(--background)",

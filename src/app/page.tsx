@@ -52,7 +52,7 @@ function Introduce() {
       <div className="pt-4 2xl:pt-2 mt-[20px] 2xl:mb-[10px] mb-[60px]">
         <Participants />
       </div>
-      <p className="dark:text-normal text-black text-[11px] 2xl:text-[9px] w-[80%] font-light 2xl:mb-[50px] mb-[150px]">
+      <p className="dark:text-normal text-black text-[11px] 2xl:text-[9px] w-[80%] font-light 2xl:mb-[50px] mb-[180px]">
         Loyalty™ is a trademarked platform dedicated to helping pharmaceutical
         retailers purchase in bulk efficiently. Our brand name, logo, and
         associated materials are legally protected, ensuring authenticity and

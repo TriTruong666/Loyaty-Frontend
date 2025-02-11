@@ -61,7 +61,7 @@ function EmailForm() {
           >
             Email Address *
           </label>
-          <div className="group flex items-center w-[60%] py-3 px-3 border space-x-4 border-gray-400 border-opacity-40 rounded-md transition-all duration-300 hover:border-opacity-80 focus-within:border-opacity-80 hover:shadow-md focus-within:shadow-md">
+          <div className="group flex items-center w-[70%] py-3 px-3 border space-x-4 border-gray-400 border-opacity-40 rounded-md transition-all duration-300 hover:border-opacity-80 focus-within:border-opacity-80 hover:shadow-md focus-within:shadow-md">
             <MdEmail size={20} />
             <input
               type="text"
@@ -73,7 +73,7 @@ function EmailForm() {
             Your email not linked to our system.
           </p> */}
           <button
-            className="mt-6 2xl:mt-3 2xl:text-sm w-[60%] border py-2 rounded-md transition-all duration-300 bg-gray-300 text-gray-500
+            className="mt-6 2xl:mt-3 2xl:text-sm w-[70%] border py-2 rounded-md transition-all duration-300 bg-gray-300 text-gray-500
              disabled:bg-[#141414] disabled:text-gray-600 disabled:border-gray-400 disabled:border-opacity-20
              enabled:bg-primary enabled:text-black enabled:hover:bg-black enabled:hover:text-white enabled:border-transparent enabled:hover:border-white"
             onClick={handleSubmit}

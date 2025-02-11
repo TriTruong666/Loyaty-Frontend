@@ -4,16 +4,16 @@
 
 :root {
   --background: #ffffff;
-  --primary: #A4FF66;
-  --normal: #A4A4A4;
+  --primary: #a4ff66;
+  --normal: #a4a4a4;
   --foreground: #171717;
-  --dangerous: #D73434;
+  --dangerous: #d73434;
 }
 
 /* Apply dark mode styles automatically when html.dark is present */
 html.dark {
   --background: #0a0a0a;
-  --primary: #A4FF66;
+  --primary: #a4ff66;
   --foreground: #ededed;
 }
 
