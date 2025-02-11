@@ -78,7 +78,7 @@ function LoginForm() {
       >
         Email Address *
       </label>
-      <div className="group flex items-center w-[60%] py-3 px-3 border space-x-4 border-gray-400 border-opacity-40 rounded-md transition-all duration-300 hover:border-opacity-80 focus-within:border-opacity-80 hover:shadow-md focus-within:shadow-md">
+      <div className="group flex items-center w-[80%] py-3 px-3 border space-x-4 border-gray-400 border-opacity-40 rounded-md transition-all duration-300 hover:border-opacity-80 focus-within:border-opacity-80 hover:shadow-md focus-within:shadow-md">
         <MdEmail size={20} />
         <input
           type="text"
@@ -94,7 +94,7 @@ function LoginForm() {
       >
         Password *
       </label>
-      <div className="relative group flex items-center w-[60%] py-3 px-3 border space-x-4 border-gray-400 border-opacity-40 rounded-md transition-all duration-300 hover:border-opacity-80 focus-within:border-opacity-80 hover:shadow-md focus-within:shadow-md">
+      <div className="relative group flex items-center w-[80%] py-3 px-3 border space-x-4 border-gray-400 border-opacity-40 rounded-md transition-all duration-300 hover:border-opacity-80 focus-within:border-opacity-80 hover:shadow-md focus-within:shadow-md">
         <FaKey size={20} />
         <input
           type={showPassword ? "text" : "password"} // Toggle Password Visibility
@@ -119,7 +119,7 @@ function LoginForm() {
       </p> */}
       {/* Submit Button */}
       <button
-        className="mt-6 2xl:mt-3 2xl:text-sm w-[60%] border py-2 rounded-md transition-all duration-300 bg-gray-300 text-gray-500
+        className="mt-6 2xl:mt-3 2xl:text-sm w-[80%] border py-2 rounded-md transition-all duration-300 bg-gray-300 text-gray-500
              disabled:bg-[#141414] disabled:text-gray-600 disabled:border-gray-400 disabled:border-opacity-20
              enabled:bg-primary enabled:text-black enabled:hover:bg-black enabled:hover:text-white enabled:border-transparent enabled:hover:border-white"
         onClick={handleSubmit}
@@ -209,7 +209,7 @@ function EmailVerification() {
   };
 
   return (
-    <div className="flex flex-col w-full justify-center items-center gap-y-6 min-h-screen bg-black text-white p-4">
+    <div className="flex flex-col w-full justify-center items-center gap-y-6 min-h-screen bg-background text-white p-4">
       {/* Icon & Tiêu đề */}
       <IoMailUnreadOutline className="text-[60px]" />
       <p className="text-[40px] font-semibold">Please check your email.</p>
