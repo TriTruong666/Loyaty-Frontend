@@ -77,7 +77,7 @@ function MainMenuForAdmin() {
 
   return (
     <div className="flex flex-col">
-      <p className="text-normal text-sm px-6 py-4">Menu</p>
+      <p className="text-normal text-[12px] px-6 py-4">Menu</p>
       <div className="flex flex-col gap-y-3 mb-2">
         {menu.map((item, i) => (
           <MenuItem
@@ -113,7 +113,7 @@ function UtilityItem() {
   ];
   return (
     <div className="flex flex-col pt-4 ">
-      <p className="text-normal text-sm px-6 py-2">Utilities</p>
+      <p className="text-normal text-[12px] px-6 py-2">Utilities</p>
       <div className="flex flex-col gap-y-3 mt-2">
         {utilMenu.map((item, i) => (
           <MenuItem
@@ -140,7 +140,8 @@ function MenuItem({
   typography?: number;
 }) {
   const pathName = usePathname();
-  const isActive = pathName === path;
+  const isActive =
+    path === "/dashboard" ? pathName === path : pathName.startsWith(path);
 
   return (
     <Link
@@ -149,18 +150,16 @@ function MenuItem({
         isActive ? "border-l-[4px] !border-primary !bg-transparent" : ""
       }`}
     >
-      {/* Background hover animation (left to right) */}
       <span className="absolute inset-0 bg-gray-600 bg-opacity-10 scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
 
-      {/* Left side (Icon + Name) */}
       <div className="relative flex items-center gap-x-3 z-10">
         <Icon
-          className={`text-[19px] text-normal group-hover:text-foreground transition-all duration-300 ${
+          className={`text-[16px] text-normal group-hover:text-foreground transition-all duration-300 ${
             isActive ? "!text-primary" : ""
           }`}
         />
         <p
-          className={`text-[16px] font-light group-hover:text-foreground transition-all duration-300 ${
+          className={`text-[13px] font-light group-hover:text-foreground transition-all duration-300 ${
             isActive ? "!text-primary font-medium" : "text-normal"
           }`}
         >
@@ -168,7 +167,6 @@ function MenuItem({
         </p>
       </div>
 
-      {/* Typography Badge */}
       {typography !== undefined && (
         <p
           className={`relative text-[10px] px-2 py-[2px] bg-transparent text-foreground border border-gray-400-40 group-hover:border-transparent group-hover:bg-foreground group-hover:text-background ${
@@ -193,7 +191,7 @@ function MenuOnlyForCEO() {
   ];
   return (
     <div className="flex flex-col pt-4 ">
-      <p className="text-normal text-sm px-6 py-2">Only CEO</p>
+      <p className="text-normal text-[12px] px-6 py-2">Only CEO</p>
       <div className="flex flex-col gap-y-3 mt-2">
         {ceoMenu.map((item, i) => (
           <MenuItem

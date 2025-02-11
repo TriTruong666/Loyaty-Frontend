@@ -52,11 +52,11 @@ function SearchBar() {
   }, [charIndex, isDeleting, index]);
 
   return (
-    <div className="flex items-center border w-[400px] px-2 py-2 rounded-md gap-x-3 border-gray-600 border-opacity-30 transition-all duration-150 focus-within:border-gray-400">
-      <IoIosSearch className="text-[22px]" />
+    <div className="flex items-center w-[600px] 2xl:w-[500px] px-3 py-3 rounded-full gap-x-3 bg-[#222124] transition-all duration-150">
+      <IoIosSearch className="text-[24px]" />
       <input
         type="text"
-        className="outline-none bg-transparent border-none w-full text-[14px]"
+        className="outline-none bg-transparent border-none w-full text-[14px] font-bold"
         placeholder={placeholder}
       />
     </div>
@@ -70,14 +70,22 @@ function MainBar() {
         <IoShieldCheckmarkOutline className="text-[14px] text-[#34C724]" />
         <p className="text-[12px] text-[#34C724]">Verified</p>
       </div>
-      <div className="px-4 border-l-[2px]">
+      {/* Notification Icon with Badge */}
+      <div className="relative px-4 border-l-[2px]">
         <BsBellFill className="text-[20px]" />
+        <span className="absolute -top-1 left-[30px] bg-red-500 text-white text-[8px] px-[6px] py-[1px] rounded-full font-bold">
+          10
+        </span>
+      </div>
+      {/* Cart Icon with Badge */}
+      <div className="relative px-4 border-l-[2px]">
+        <FaShoppingCart className="text-[20px]" />
+        <span className="absolute -top-1 left-[30px] bg-red-500 text-white text-[8px] px-[6px] py-[1px] rounded-full font-bold">
+          5
+        </span>
       </div>
       <div className="px-4 border-l-[2px]">
         <IoIosSettings className="text-[20px]" />
-      </div>
-      <div className="px-4 border-l-[2px]">
-        <FaShoppingCart className="text-[20px]" />
       </div>
       {/* Avatar */}
       <div className="flex items-center ml-[15px] gap-x-2">
