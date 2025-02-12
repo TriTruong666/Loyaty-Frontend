@@ -1,40 +1,36 @@
 "use client";
-import {
-  Avatar,
-  Option,
-  Select,
-  ThemeProvider,
-  Typography,
-} from "@material-tailwind/react";
+import { Option, Select, ThemeProvider } from "@material-tailwind/react";
 import { selectTheme } from "@/theme/select-theme";
 import woman from "@/static/woman-1.jpg";
 import Image from "next/image";
 import { IoIosInformationCircleOutline } from "react-icons/io";
+import { Pagination } from "@heroui/pagination";
 export default function CompanyAccountPage() {
   return (
     <div className="flex flex-col">
       <div className="flex items-center px-[40px] py-[20px] mt-[10px] justify-end gap-x-4">
-        <div className="w-[200px]">
+        <div className="w-[250px]">
           <ThemeProvider value={selectTheme}>
             <Select
-              label="Sort by"
+              label="Sắp xếp"
               variant="standard"
               className="font-inter font-semibold"
             >
-              <Option>By name (A → Z)</Option>
-              <Option>By name (Z → A)</Option>
+              <Option>Tên khách hàng (A → Z)</Option>
+              <Option>Tên khách hàng (Z → A)</Option>
             </Select>
           </ThemeProvider>
         </div>
-        <div className="w-[200px]">
+        <div className="w-[250px]">
           <ThemeProvider value={selectTheme}>
             <Select
-              label="Filter"
+              label="Bộ lọc"
               variant="standard"
               className="font-inter font-semibold"
             >
-              <Option>By name (A → Z)</Option>
-              <Option>By name (Z → A)</Option>
+              <Option>Bởi trạng thái</Option>
+              <Option>Bởi ID (Tăng dần)</Option>
+              <Option>Bởi ID (Giảm dần)</Option>
             </Select>
           </ThemeProvider>
         </div>
@@ -78,7 +74,7 @@ function AccountCompanyTable() {
     }
   };
   return (
-    <div className="flex mt-[20px]">
+    <div className="flex mt-[20px] flex-col items-center">
       <table className="flex flex-col w-full">
         <thead>
           <tr className="grid grid-cols-12 mx-[20px] px-[20px] py-4 bg-[#111111] rounded-lg">
@@ -86,22 +82,22 @@ function AccountCompanyTable() {
               ID
             </th>
             <th className="col-span-3 text-[12px] text-normal font-light text-start">
-              Contact
+              Thông tin
             </th>
             <th className="col-span-2 text-[12px] text-normal font-light text-start">
-              Address
+              Địa chỉ
             </th>
             <th className="col-span-2 text-[12px] text-normal font-light text-center">
-              Phone
+              Số điện thoại
             </th>
             <th className="col-span-1 text-[12px] text-normal font-light text-start">
               Loyalty
             </th>
             <th className="col-span-1 text-[12px] text-normal font-light text-center">
-              Status
+              Trạng thái
             </th>
             <th className="col-span-2 text-[12px] text-normal font-light text-end">
-              Actions
+              Thêm
             </th>
           </tr>
         </thead>
@@ -157,6 +153,15 @@ function AccountCompanyTable() {
           </tr>
         </tbody>
       </table>
+      <div className="mt-[20px]">
+        <Pagination
+          loop
+          showControls
+          color="default"
+          initialPage={1}
+          total={10}
+        />
+      </div>
     </div>
   );
 }

@@ -18,9 +18,9 @@ export default function DashboardHeader() {
 
 function SearchBar() {
   const placeholderTexts = [
-    "Search for products...",
-    "Find your orders...",
-    "Look up accounts...",
+    "Tìm sản phẩm bạn đang cần...",
+    "Đơn hàng mà bạn tìm kiếm...",
+    "Danh mục nhãn hàng...",
   ];
 
   const [placeholder, setPlaceholder] = useState("");
@@ -56,7 +56,7 @@ function SearchBar() {
       <IoIosSearch className="text-[24px]" />
       <input
         type="text"
-        className="outline-none bg-transparent border-none w-full text-[14px] font-bold"
+        className="outline-none bg-transparent border-none w-full text-[14px] font-light"
         placeholder={placeholder}
       />
     </div>

@@ -6,7 +6,7 @@ export function AccountRoleMenu() {
 
   const roles = [
     { name: "Admin", path: "/dashboard/accounts", count: 10 },
-    { name: "Company", path: "/dashboard/accounts/company", count: 10 },
+    { name: "Doanh nghiệp", path: "/dashboard/accounts/company", count: 10 },
     { name: "Sales", path: "/dashboard/accounts/sales", count: 10 },
     { name: "CEO", path: "/dashboard/accounts/ceo", count: 1 },
   ];

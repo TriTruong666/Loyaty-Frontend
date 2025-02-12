@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import { FaUserTag, FaBuilding } from "react-icons/fa6";
 import RadioButton from "./radio-button";
 import { FaUserCheck } from "react-icons/fa";
@@ -18,8 +17,7 @@ import { IoMail } from "react-icons/io5";
 import { MdLocalPhone } from "react-icons/md";
 import { RiBuilding2Fill } from "react-icons/ri";
 import { Select, SelectItem } from "@heroui/select";
-import { IoMdCheckmark } from "react-icons/io";
-import toast from "react-hot-toast";
+import { IoIosPin, IoMdCheckmark } from "react-icons/io";
 
 export default function AddAccountModal() {
   const isToggleAddAccountModal = useAtomValue(addAccountModalState);
@@ -240,6 +238,11 @@ function LocationForm() {
           ))}
         </Select>
       </div>
+      <NormalInput
+        label="Địa chỉ giao hàng"
+        placeholder="2/35 Chấn Hưng"
+        icon={<IoIosPin size={20} />}
+      />
       <div className="flex items-center w-full mt-[20px] gap-x-4">
         <div
           onClick={handleGoPrev}

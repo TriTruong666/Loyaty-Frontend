@@ -56,7 +56,7 @@ export const selectTheme = {
       base: {
         container: {
           position: "relative",
-          width: "w-[200px]",
+          width: "w-[250px]",
           minWidth: "min-w-[200px]",
         },
         select: {

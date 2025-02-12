@@ -47,28 +47,28 @@ export default function DashboardSidebar() {
 function MainMenuForAdmin() {
   const menu = [
     {
-      name: "Portfolio",
+      name: "Tổng quan",
       icon: RiLineChartLine,
       path: "/dashboard",
     },
     {
-      name: "Accounts",
+      name: "Tài khoản",
       icon: HiOutlineUser,
       path: "/dashboard/accounts",
     },
     {
-      name: "Products",
+      name: "Sản phẩm",
       icon: LuPackage2,
       path: "/dashboard/products",
     },
     {
-      name: "Orders",
+      name: "Đơn hàng",
       icon: LuFileText,
       path: "/dashboard/orders",
       typography: 10,
     },
     {
-      name: "Notifications",
+      name: "Thông báo",
       icon: PiNotification,
       path: "/dashboard/notification",
       typography: 3,
@@ -96,17 +96,17 @@ function MainMenuForAdmin() {
 function UtilityItem() {
   const utilMenu = [
     {
-      name: "Setting",
+      name: "Cài đặt",
       icon: RiSettingsLine,
       path: "/dashboard/setting",
     },
     {
-      name: "Need help?",
+      name: "Hỗ trợ?",
       icon: IoIosHelpCircleOutline,
       path: "/dashboard/help",
     },
     {
-      name: "Logout",
+      name: "Đăng xuất",
       icon: IoIosLogOut,
       path: "/dashboard/help",
     },
@@ -183,7 +183,7 @@ function MenuItem({
 function MenuOnlyForCEO() {
   const ceoMenu = [
     {
-      name: "Register approve",
+      name: "Xét duyệt",
       icon: LuUserCheck,
       path: "/dashboard/approve",
       typography: 3,
@@ -210,28 +210,28 @@ function MenuOnlyForCEO() {
 function UserMenu() {
   const userMenu = [
     {
-      name: "Portfolio",
+      name: "Tổng quan",
       icon: RiLineChartLine,
       path: "/dashboard",
     },
     {
-      name: "Shopping",
+      name: "Mua sắm",
       icon: RiShoppingBagLine,
       path: "/dashboard/shop",
     },
     {
-      name: "Cart",
+      name: "Giỏ hàng",
       icon: BsCart,
       path: "/dashboard/cart",
     },
     {
-      name: "Orders",
+      name: "Đơn hàng",
       icon: LuFileText,
       path: "/dashboard/orders",
       typography: 10,
     },
     {
-      name: "Notifications",
+      name: "Thông báo",
       icon: PiNotification,
       path: "/dashboard/notification",
       typography: 3,
