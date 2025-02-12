@@ -17,7 +17,7 @@ import { BsCart } from "react-icons/bs";
 
 export default function DashboardSidebar() {
   return (
-    <div className="flex flex-col justify-between w-[270px] border-gray-400-40 h-screen border-r font-open">
+    <div className="flex flex-col justify-between w-[270px] border-gray-400-40 h-screen border-r font-open overflow-hidden">
       {/* main */}
       <div className="flex flex-col">
         <div className="flex justify-center items-center-40 py-2">
@@ -28,7 +28,7 @@ export default function DashboardSidebar() {
           />
         </div>
         <div className="py-2">
-          <MainMenuForAdmin />
+          <UserMenu />
         </div>
         {/* <div className="border-t border-gray-400-40 pb-2">
           <MenuOnlyForCEO />

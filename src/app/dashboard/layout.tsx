@@ -8,13 +8,14 @@ export default function DashboardLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <div className="flex min-h-screen relative">
+    <div className="flex min-h-screen relative overflow-hidden">
       <Toaster position="bottom-right" reverseOrder={false} />
       <AddAccountModal />
       <DashboardSidebar />
-      <div className="flex flex-col w-[calc(100vw-270px)]">
+      {/* Allow scrolling inside the content area */}
+      <div className="flex flex-col w-[calc(100vw-270px)] h-screen">
         <DashboardHeader />
-        <div>{children}</div>
+        <div className="flex-1 overflow-auto">{children}</div>
       </div>
     </div>
   );
