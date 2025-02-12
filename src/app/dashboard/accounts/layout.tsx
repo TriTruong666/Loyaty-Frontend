@@ -1,11 +1,17 @@
 "use client";
 import { AccountRoleMenu } from "@/components/account-role-menu";
+import { addAccountModalState } from "@/context/modalState";
+import { useSetAtom } from "jotai";
 import { HiPlusSmall } from "react-icons/hi2";
 import { PiExport } from "react-icons/pi";
 
 export default function AccountDashboardLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const setAddAccountModal = useSetAtom(addAccountModalState);
+  const handleOpenModal = () => {
+    setAddAccountModal(true);
+  };
   return (
     <div className="flex flex-col font-open py-[20px]">
       <div className="flex items-center justify-between px-[40px]">
@@ -21,7 +27,10 @@ export default function AccountDashboardLayout({
             <PiExport className="text-[16px] text-foreground" />
             <p className="text-[12px] text-foreground">Export CSV</p>
           </div>
-          <div className="flex items-center bg-foreground border border-foreground px-4 py-[6px] rounded-md cursor-pointer gap-x-2 transition-all duration-200 hover:bg-foreground hover:border-transparent group">
+          <div
+            onClick={handleOpenModal}
+            className="flex items-center bg-foreground border border-foreground px-4 py-[6px] rounded-md cursor-pointer gap-x-2 transition-all duration-200 hover:bg-foreground hover:border-transparent group"
+          >
             <HiPlusSmall className="text-[16px] text-background" />
             <p className="text-[12px] text-background">New Account</p>
           </div>
