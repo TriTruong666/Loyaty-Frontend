@@ -10,7 +10,7 @@ import { selectTheme } from "@/theme/select-theme";
 import woman from "@/static/woman-1.jpg";
 import Image from "next/image";
 import { IoIosInformationCircleOutline } from "react-icons/io";
-export default function AccountPage() {
+export default function AccountSalesPage() {
   return (
     <div className="flex flex-col">
       <div className="flex items-center px-[40px] py-[20px] mt-[10px] justify-end gap-x-4">
@@ -39,12 +39,12 @@ export default function AccountPage() {
           </ThemeProvider>
         </div>
       </div>
-      <AccountCompanyTable />
+      <AccountSalesTable />
     </div>
   );
 }
 
-function AccountCompanyTable() {
+function AccountSalesTable() {
   const rankingTheme = (title: string) => {
     switch (title) {
       case "gold":

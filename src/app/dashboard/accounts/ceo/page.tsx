@@ -10,7 +10,7 @@ import { selectTheme } from "@/theme/select-theme";
 import woman from "@/static/woman-1.jpg";
 import Image from "next/image";
 import { IoIosInformationCircleOutline } from "react-icons/io";
-export default function AccountPage() {
+export default function CEOAccountPage() {
   return (
     <div className="flex flex-col">
       <div className="flex items-center px-[40px] py-[20px] mt-[10px] justify-end gap-x-4">
@@ -39,24 +39,12 @@ export default function AccountPage() {
           </ThemeProvider>
         </div>
       </div>
-      <AccountCompanyTable />
+      <AccountCEOTable />
     </div>
   );
 }
 
-function AccountCompanyTable() {
-  const rankingTheme = (title: string) => {
-    switch (title) {
-      case "gold":
-        return "bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-yellow-600 via-orange-500 to-gray-900";
-      case "bronze":
-        return "bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-[#78716C] via-black to-[#737373]";
-      case "silver":
-        return "bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-[#D6D3D1] via-[#262626] to-[#ECFCCB]";
-      default:
-        return "";
-    }
-  };
+function AccountCEOTable() {
   const statusTheme = (status: string) => {
     switch (status) {
       case "inactive":
