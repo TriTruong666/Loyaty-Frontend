@@ -14,6 +14,8 @@ import { RiSettingsLine } from "react-icons/ri";
 import { IoIosLogOut } from "react-icons/io";
 import { RiShoppingBagLine } from "react-icons/ri";
 import { BsCart } from "react-icons/bs";
+import { FaLockOpen } from "react-icons/fa";
+import { IoLockOpenOutline } from "react-icons/io5";
 
 export default function DashboardSidebar() {
   return (
@@ -28,13 +30,13 @@ export default function DashboardSidebar() {
           />
         </div>
         <div className="py-2">
-          <UserMenu />
+          <MainMenuForAdmin />
         </div>
         {/* <div className="border-t border-gray-400-40 pb-2">
           <MenuOnlyForCEO />
         </div> */}
         <div className="border-t border-gray-400-40">
-          <UtilityItem />
+          <MenuOnlyForCEO />
         </div>
       </div>
       <p className="text-center text-primary font-light text-[11px] pb-4">
@@ -184,14 +186,14 @@ function MenuOnlyForCEO() {
   const ceoMenu = [
     {
       name: "Xét duyệt",
-      icon: LuUserCheck,
-      path: "/dashboard/approve",
+      icon: IoLockOpenOutline,
+      path: "/dashboard/permission",
       typography: 3,
     },
   ];
   return (
     <div className="flex flex-col pt-4 ">
-      <p className="text-normal text-[12px] px-6 py-2">Only CEO</p>
+      <p className="text-normal text-[12px] px-6 py-2">Dành cho CEO</p>
       <div className="flex flex-col gap-y-3 mt-2">
         {ceoMenu.map((item, i) => (
           <MenuItem
@@ -239,7 +241,7 @@ function UserMenu() {
   ];
   return (
     <div className="flex flex-col pt-4 ">
-      <p className="text-normal text-sm px-6 py-1">Menu</p>
+      <p className="text-normal text-[12px] px-6 py-1">Menu</p>
       <div className="flex flex-col gap-y-3 mt-2">
         {userMenu.map((item, i) => (
           <MenuItem

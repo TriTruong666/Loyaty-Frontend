@@ -10,7 +10,7 @@ export default function DashboardLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <div className="flex min-h-screen relative overflow-hidden">
-      <Toaster position="bottom-right" reverseOrder={false} />
+      <Toaster position="top-center" reverseOrder={false} />
       <AddProductModal />
       <AddAccountModal />
       <DashboardSidebar />

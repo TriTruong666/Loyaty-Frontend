@@ -18,9 +18,9 @@ const createProductProgress = atom(1);
 export default function AddProductModal() {
   const addProductModalProgress = useAtomValue(createProductProgress);
   const isToggleAddProductModal = useAtomValue(addProductModalState);
-  // if (!isToggleAddProductModal) {
-  //   return <></>;
-  // }
+  if (!isToggleAddProductModal) {
+    return <></>;
+  }
   return (
     <div className="fixed w-screen h-screen top-0 left-0 flex items-center justify-center z-50 bg-gray-900 bg-clip-padding backdrop-filter backdrop-blur-[2px] bg-opacity-10 backdrop-saturate-100 backdrop-contrast-100">
       <div className="w-[700px] bg-black flex flex-col transition-all duration-300 items-center relative py-[40px] px-[40px] rounded-[15px] shadow-[2px_2px_60px_6px_rgba(19,_19,_19,_0.63)]">

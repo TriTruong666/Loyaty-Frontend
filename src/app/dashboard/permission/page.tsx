@@ -1,19 +1,38 @@
 "use client";
-import { Option, Select, ThemeProvider } from "@material-tailwind/react";
-import { selectTheme } from "@/theme/select-theme";
-import woman from "@/static/woman-1.jpg";
+import { Pagination } from "@heroui/pagination";
 import Image from "next/image";
 import { IoIosInformationCircleOutline } from "react-icons/io";
-import { Pagination } from "@heroui/pagination";
-export default function AccountPage() {
+import woman from "@/static/woman-1.jpg";
+import { Option, Select, ThemeProvider } from "@material-tailwind/react";
+import { selectTheme } from "@/theme/select-theme";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { Button } from "@heroui/button";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownSection,
+  DropdownItem,
+} from "@heroui/dropdown";
+import { IoCheckmarkSharp } from "react-icons/io5";
+import { showToast } from "@/hooks/useToast";
+export default function CEOPermissionPage() {
   return (
-    <div className="flex flex-col">
-      <AccountCompanyTable />
+    <div className="flex flex-col font-open py-[20px] ">
+      <div className="flex flex-col gap-y-[5px] px-[40px]">
+        <p className="text-[28px] font-light select-none">Xét duyệt đăng ký</p>
+        <p className="text-sm text-normal">
+          CEO có thể xét duyệt tài khoản được tạo tại đây.
+        </p>
+      </div>
+      <div className="">
+        <Table />
+      </div>
     </div>
   );
 }
 
-function AccountCompanyTable() {
+function Table() {
   const statusTheme = (status: string) => {
     switch (status) {
       case "inactive":
@@ -67,8 +86,15 @@ function AccountCompanyTable() {
       phone: "0987112233",
       status: "inactive",
     },
+    {
+      id: 5,
+      name: "Pham Van C",
+      email: "phamvanc@example.com",
+      address: "23 Le Loi, Quan 3, TP.HCM",
+      phone: "0987112233",
+      status: "inactive",
+    },
   ];
-
   return (
     <>
       <div className="flex items-center px-[40px] py-[20px] mt-[10px] justify-end gap-x-4">
@@ -99,7 +125,7 @@ function AccountCompanyTable() {
         </div>
       </div>
       <div className="flex mt-[20px] flex-col items-center">
-        <table className="flex flex-col w-full max-h-[350px]">
+        <table className="flex flex-col w-full max-h-[407px]">
           <thead>
             <tr className="grid grid-cols-12 mx-[20px] px-[20px] py-4 bg-[#111111] rounded-lg">
               <th className="col-span-1 text-[12px] text-normal font-light text-start">
@@ -164,8 +190,31 @@ function AccountCompanyTable() {
                     Active
                   </p>
                 </td>
-                <td className="col-span-2 text-[13px] font-semibold text-end">
-                  Actions
+                <td className="col-span-2 text-[13px] font-semibold flex justify-end">
+                  <Dropdown>
+                    <DropdownTrigger>
+                      <Button isIconOnly size="sm" variant="light">
+                        <BsThreeDotsVertical className="text-normal text-[16px]" />
+                      </Button>
+                    </DropdownTrigger>
+                    <DropdownMenu>
+                      <DropdownItem
+                        onPress={() =>
+                          showToast("Tài khoản đã được duyệt!", "success")
+                        }
+                        className="group"
+                        color="default"
+                        startContent={
+                          <IoCheckmarkSharp className="text-[16px] group-hover:text-success" />
+                        }
+                        key="approve"
+                      >
+                        <p className="group-hover:text-success">
+                          Duyệt tài khoản
+                        </p>
+                      </DropdownItem>
+                    </DropdownMenu>
+                  </Dropdown>
                 </td>
               </tr>
             ))}
