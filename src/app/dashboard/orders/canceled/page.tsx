@@ -7,11 +7,9 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { selectTheme } from "@/theme/select-theme";
-import woman from "@/static/woman-1.jpg";
-import Image from "next/image";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 
-export default function ProductPage() {
+export default function OrderReturnedPage() {
   return (
     <div className="flex flex-col">
       <div className="flex items-center px-[40px] py-[20px] mt-[10px] justify-end gap-x-4">
@@ -40,12 +38,12 @@ export default function ProductPage() {
           </ThemeProvider>
         </div>
       </div>
-      <ProductTable />
+      <OrderReturnedTable />
     </div>
   );
 }
 
-function ProductTable() {
+function OrderReturnedTable() {
   const rankingTheme = (title: string) => {
     switch (title) {
       case "gold":
@@ -60,11 +58,13 @@ function ProductTable() {
   };
   const statusTheme = (status: string) => {
     switch (status) {
-      case "inactive":
-        return "border-gray-400-40";
-      case "active":
+      case "pending":
+        return "border-purple-500";
+      case "processing":
+        return "border-yellow-300";
+      case "delivered":
         return "border-[#45A834]";
-      case "notsaleanymore":
+      case "returned":
         return "border-red-500";
       default:
         return "";
@@ -72,11 +72,13 @@ function ProductTable() {
   };
   const titleStatusTheme = (status: string) => {
     switch (status) {
-      case "inactive":
-        return "text-normal";
-      case "active":
+      case "pending":
+        return "text-purple-700";
+      case "processing":
+        return "text-yellow-400";
+      case "delivered":
         return "text-[#45A834]";
-      case "notsaleanymore":
+      case "returned":
         return "text-red-500";
       default:
         return "";
@@ -86,18 +88,19 @@ function ProductTable() {
     <div className="flex mt-[20px]">
       <table className="flex flex-col w-full">
         <thead>
-          <tr className="grid grid-cols-12 mx-[20px] px-[20px] py-4 bg-[#111111] rounded-lg">
+          <tr className="grid grid-cols-12 mx-[20px] px-[30px] py-4 bg-[#111111] rounded-lg">
             <th className="col-span-1 text-[12px] text-normal font-light text-start">
               ID
             </th>
             <th className="col-span-3 text-[12px] text-normal font-light text-start">
-              Sản Phẩm
+              Tên Khách Hàng
             </th>
-            <th className="col-span-2 text-[12px] text-normal font-light text-start">
-              Nhãn Hàng
+
+            <th className="col-span-2 text-[12px] text-normal font-light text-center">
+              Hình Thức Thanh Toán
             </th>
             <th className="col-span-2 text-[12px] text-normal font-light text-center">
-              Giá
+              Tổng Giá
             </th>
             <th className="col-span-2 text-[12px] text-normal font-light text-center">
               Trạng Thái
@@ -111,34 +114,31 @@ function ProductTable() {
           <tr className="grid grid-cols-12 mx-[20px] px-[20px] py-4 items-center border-b border-gray-600 border-opacity-40">
             <td className="col-span-1 text-[13px]">1</td>
             <td className="col-span-3 flex items-center gap-x-2">
-              <Image
-                alt=""
-                src={woman}
-                className="w-[35px] h-[35px] object-cover rounded"
-              />
-              <div className="flex flex-col">
-                <p className="text-[13px] font-semibold">Kem Duong Da</p>
-              </div>
+              <p className="text-[13px] font-semibold">Sang</p>
             </td>
-            <td className="col-span-2 text-[11px] font-semibold">Easydew</td>
+
             <td className="col-span-2 text-[13px] text-center font-semibold">
-              700$
+              Chuyen Khoan
+            </td>
+
+            <td className="col-span-2 text-[13px] text-center font-semibold">
+              50$
             </td>
 
             <td
               className={`col-span-2 flex justify-center w-fit px-3 gap-x-1 py-[2px] border ml-[60px] ${statusTheme(
-                "active"
+                "returned"
               )} rounded-lg`}
             >
               <IoIosInformationCircleOutline
-                className={`${titleStatusTheme("active")}`}
+                className={`${titleStatusTheme("returned")}`}
               />
               <p
                 className={`text-[11px] font-semibold font-open ${titleStatusTheme(
-                  "active"
+                  "returned"
                 )}`}
               >
-                Đang Bán
+                Đã Hủy
               </p>
             </td>
             <td className="col-span-2 text-[13px] font-semibold text-end">

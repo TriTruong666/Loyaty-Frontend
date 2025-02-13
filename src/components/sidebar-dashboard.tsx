@@ -28,7 +28,7 @@ export default function DashboardSidebar() {
           />
         </div>
         <div className="py-2">
-          <UserMenu />
+          <MainMenuForAdmin />
         </div>
         {/* <div className="border-t border-gray-400-40 pb-2">
           <MenuOnlyForCEO />

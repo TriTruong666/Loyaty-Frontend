@@ -39,12 +39,12 @@ export default function ProductNotSalePage() {
           </ThemeProvider>
         </div>
       </div>
-      <AccountCompanyTable />
+      <ProductNotSaleTable />
     </div>
   );
 }
 
-function AccountCompanyTable() {
+function ProductNotSaleTable() {
   const rankingTheme = (title: string) => {
     switch (title) {
       case "gold":

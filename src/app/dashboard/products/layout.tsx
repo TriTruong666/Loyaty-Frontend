@@ -2,7 +2,7 @@
 import { ProductStatusMenu } from "@/components/products-status-menu";
 import { HiPlusSmall } from "react-icons/hi2";
 
-export default function AccountDashboardLayout({
+export default function ProductDashboardLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
