@@ -32,6 +32,7 @@ export default function AddProductModal() {
 }
 
 function ProductForm() {
+  const setAddProductModal = useSetAtom(addProductModalState);
   const setProductModalProgress = useSetAtom(createProductProgress);
   const animals = [
     { key: "cat", label: "Cat" },
@@ -50,6 +51,9 @@ function ProductForm() {
   ];
   const handleGoNext = () => {
     setProductModalProgress(2);
+  };
+  const handleCloseModal = () => {
+    setAddProductModal(false);
   };
   return (
     <div className="flex flex-col justify-center items-center gap-y-3 w-full">
@@ -109,17 +113,23 @@ function ProductForm() {
         </div>
       </div>
       <div className="flex items-center w-full gap-x-[30px] mt-[20px]">
-        <Button className="w-full" variant="flat" color="default" size="lg">
-          Quay lại
+        <Button
+          className="w-full"
+          variant="flat"
+          color="default"
+          size="lg"
+          onPress={handleCloseModal}
+        >
+          <p className="font-bold">Quay lại</p>
         </Button>
         <Button
           className="w-full"
-          variant="solid"
+          variant="flat"
           color="secondary"
           size="lg"
           onPress={handleGoNext}
         >
-          Tiếp tục
+          <p className="text-secondary font-bold">Tiếp tục</p>
         </Button>
       </div>
     </div>
@@ -243,18 +253,18 @@ function ImageDropZone() {
           size="lg"
           onPress={handleGoPrev}
         >
-          Quay lại
+          <p className="font-bold">Quay lại</p>
         </Button>
         <Button
           className="w-full"
-          variant="solid"
-          color="success"
+          variant="flat"
+          color="secondary"
           size="lg"
           onPress={handleUpload}
           isDisabled={!isSubmitFile}
           isLoading={isUploading}
         >
-          Tạo sản phẩm
+          <p className="text-secondary font-bold">Tạo sản phẩm</p>
         </Button>
       </div>
     </div>

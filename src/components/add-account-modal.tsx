@@ -2,8 +2,6 @@
 import { FaUserTag, FaBuilding } from "react-icons/fa6";
 import RadioButton from "./radio-button";
 import { FaUserCheck } from "react-icons/fa";
-import { TiChevronLeftOutline } from "react-icons/ti";
-import { TiChevronRightOutline } from "react-icons/ti";
 import { atom, useAtom, useAtomValue, useSetAtom } from "jotai";
 import { addAccountModalState } from "@/context/modalState";
 import NormalInput from "./input";
@@ -13,7 +11,8 @@ import { IoMail } from "react-icons/io5";
 import { MdLocalPhone } from "react-icons/md";
 import { RiBuilding2Fill } from "react-icons/ri";
 import { Select, SelectItem } from "@heroui/select";
-import { IoIosPin, IoMdCheckmark } from "react-icons/io";
+import { IoIosPin } from "react-icons/io";
+import { Button } from "@heroui/button";
 
 const createAccountProgress = atom(1);
 const selectedAccountType = atom("");
@@ -80,20 +79,24 @@ function ChooseAccountType() {
         />
       </div>
       <div className="flex items-center w-full mt-[20px] gap-x-4">
-        <div
-          onClick={handleCloseModal}
-          className="flex items-center w-[50%] border gap-x-1 border-gray-400-40 justify-center py-2 rounded-lg cursor-pointer hover:border-foreground transition-all duration-200"
+        <Button
+          className="w-full"
+          variant="flat"
+          color="default"
+          size="lg"
+          onPress={handleCloseModal}
         >
-          <TiChevronLeftOutline size={20} />
-          <p>Thoát</p>
-        </div>
-        <div
-          onClick={handleGoNext}
-          className="flex items-center w-[50%] border border-transparent bg-primary justify-center py-2 rounded-lg gap-x-1 cursor-pointer"
+          <p className="font-bold">Quay lại</p>
+        </Button>
+        <Button
+          className="w-full"
+          variant="flat"
+          color="secondary"
+          size="lg"
+          onPress={handleGoNext}
         >
-          <p className="text-background font-semibold">Tiếp theo</p>
-          <TiChevronRightOutline className="text-background" size={20} />
-        </div>
+          <p className="text-secondary font-bold">Tiếp tục</p>
+        </Button>
       </div>
     </div>
   );
@@ -150,20 +153,24 @@ function RegistrationForm() {
         </div>
       </div>
       <div className="flex items-center w-full mt-[20px] gap-x-4">
-        <div
-          onClick={handleGoPrev}
-          className="flex items-center w-[50%] border gap-x-1 border-gray-400-40 justify-center py-2 rounded-lg cursor-pointer hover:border-foreground transition-all duration-200"
+        <Button
+          className="w-full"
+          variant="flat"
+          color="default"
+          size="lg"
+          onPress={handleGoPrev}
         >
-          <TiChevronLeftOutline size={20} />
-          <p>Quay lại</p>
-        </div>
-        <div
-          onClick={handleGoNext}
-          className="flex items-center w-[50%] border border-transparent bg-primary justify-center py-2 rounded-lg gap-x-1 cursor-pointer"
+          <p className="font-bold">Quay lại</p>
+        </Button>
+        <Button
+          className="w-full"
+          variant="flat"
+          color="secondary"
+          size="lg"
+          onPress={handleGoNext}
         >
-          <p className="text-background font-semibold">Tiếp theo</p>
-          <TiChevronRightOutline className="text-background" size={20} />
-        </div>
+          <p className="text-secondary font-bold">Tiếp tục</p>
+        </Button>
       </div>
     </div>
   );
@@ -243,20 +250,24 @@ function LocationForm() {
         icon={<IoIosPin size={20} />}
       />
       <div className="flex items-center w-full mt-[20px] gap-x-4">
-        <div
-          onClick={handleGoPrev}
-          className="flex items-center w-[50%] border gap-x-1 border-gray-400-40 justify-center py-2 rounded-lg cursor-pointer hover:border-foreground transition-all duration-200"
+        <Button
+          className="w-full"
+          variant="flat"
+          color="default"
+          size="lg"
+          onPress={handleGoPrev}
         >
-          <TiChevronLeftOutline size={20} />
-          <p>Quay lại</p>
-        </div>
-        <div
-          onClick={handleGoNext}
-          className="flex items-center w-[50%] border border-transparent bg-primary justify-center py-2 rounded-lg gap-x-1 cursor-pointer"
+          <p className="font-bold">Quay lại</p>
+        </Button>
+        <Button
+          className="w-full"
+          variant="flat"
+          color="secondary"
+          size="lg"
+          onPress={handleGoNext}
         >
-          <p className="text-background font-semibold">Tạo tài khoản</p>
-          <IoMdCheckmark className="text-background" size={20} />
-        </div>
+          <p className="text-secondary font-bold">Tạo tài khoản</p>
+        </Button>
       </div>
     </div>
   );

@@ -22,7 +22,7 @@ export default function TiptapEditor() {
     editorProps: {
       attributes: {
         class:
-          "p-4 h-[70px] max-h-[100px] overflow-auto bg-gray-700 bg-opacity-20 text-normal border border-gray-600 border-opacity-10 rounded-lg focus:outline-none",
+          "p-4 h-[70px] max-h-[100px] overflow-auto bg-gray-700 bg-opacity-20 text-normal text-sm border border-gray-600 border-opacity-10 rounded-lg focus:outline-none",
       },
     },
   });

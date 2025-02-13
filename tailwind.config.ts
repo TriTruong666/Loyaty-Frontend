@@ -1,4 +1,4 @@
-import {heroui} from '@heroui/theme';
+import { heroui } from "@heroui/theme";
 import withMT from "@material-tailwind/react/utils/withMT";
 import type { Config } from "tailwindcss";
 
@@ -8,7 +8,7 @@ export default withMT({
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@heroui/theme/dist/components/(alert|button|date-picker|dropdown|image|pagination|select|ripple|spinner|calendar|date-input|form|popover|menu|divider|listbox|scroll-shadow).js"
+    "./node_modules/@heroui/theme/dist/components/(alert|button|date-picker|dropdown|image|link|pagination|select|ripple|spinner|calendar|date-input|form|popover|menu|divider|listbox|scroll-shadow).js"
   ],
   theme: {
     extend: {
@@ -18,7 +18,7 @@ export default withMT({
         monse: ["var(--font-monse)"],
       },
       borderColor: {
-        "gray-400-40": "rgba(156, 163, 175, 0.4)",
+        "gray-400-40": "rgba(117,117,117, 0.2)",
       },
       colors: {
         background: "var(--background)",

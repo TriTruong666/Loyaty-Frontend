@@ -8,13 +8,11 @@ import { HiOutlineUser } from "react-icons/hi2";
 import { LuPackage2 } from "react-icons/lu";
 import { LuFileText } from "react-icons/lu";
 import { PiNotification } from "react-icons/pi";
-import { LuUserCheck } from "react-icons/lu";
 import { IoIosHelpCircleOutline } from "react-icons/io";
 import { RiSettingsLine } from "react-icons/ri";
 import { IoIosLogOut } from "react-icons/io";
 import { RiShoppingBagLine } from "react-icons/ri";
 import { BsCart } from "react-icons/bs";
-import { FaLockOpen } from "react-icons/fa";
 import { IoLockOpenOutline } from "react-icons/io5";
 
 export default function DashboardSidebar() {
@@ -32,9 +30,9 @@ export default function DashboardSidebar() {
         <div className="py-2">
           <UserMenu />
         </div>
-        {/* <div className="border-t border-gray-400-40 pb-2">
+        <div className="border-t border-gray-400-40 pb-2">
           <MenuOnlyForCEO />
-        </div> */}
+        </div>
         <div className="border-t border-gray-400-40">
           <UtilityItem />
         </div>
