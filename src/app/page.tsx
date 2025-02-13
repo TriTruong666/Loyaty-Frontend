@@ -3,7 +3,7 @@
 import LoginHeader from "@/components/login-header";
 import { MdEmail } from "react-icons/md";
 import { FaKey } from "react-icons/fa";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { FaCircleCheck } from "react-icons/fa6";
 import Image from "next/image";
@@ -14,6 +14,9 @@ import { IoMailUnreadOutline } from "react-icons/io5";
 
 export default function Home() {
   const progressState = useAtomValue(loginProgressState);
+  useEffect(() => {
+    console.log("Cloudinary:", process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
+  }, []);
   return (
     <>
       <div className="font-inter relative w-screen h-screen overflow-hidden">

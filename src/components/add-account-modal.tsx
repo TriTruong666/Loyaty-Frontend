@@ -4,12 +4,8 @@ import RadioButton from "./radio-button";
 import { FaUserCheck } from "react-icons/fa";
 import { TiChevronLeftOutline } from "react-icons/ti";
 import { TiChevronRightOutline } from "react-icons/ti";
-import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import { atom, useAtom, useAtomValue, useSetAtom } from "jotai";
 import { addAccountModalState } from "@/context/modalState";
-import {
-  createAccountProgress,
-  selectedAccountType,
-} from "@/context/accountState";
 import NormalInput from "./input";
 import { FaUserTie } from "react-icons/fa";
 import { DatePicker } from "@heroui/date-picker";
@@ -18,6 +14,9 @@ import { MdLocalPhone } from "react-icons/md";
 import { RiBuilding2Fill } from "react-icons/ri";
 import { Select, SelectItem } from "@heroui/select";
 import { IoIosPin, IoMdCheckmark } from "react-icons/io";
+
+const createAccountProgress = atom(1);
+const selectedAccountType = atom("");
 
 export default function AddAccountModal() {
   const isToggleAddAccountModal = useAtomValue(addAccountModalState);

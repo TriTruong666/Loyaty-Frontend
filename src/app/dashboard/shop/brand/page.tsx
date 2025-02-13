@@ -118,8 +118,11 @@ function ProductItem() {
         className="flex flex-col gap-y-[10px]"
       >
         <Image
+          loading="lazy"
           alt="Product Image"
           src={image}
+          width={316}
+          height={316}
           className="w-full h-auto object-cover rounded-[20px]"
         />
 

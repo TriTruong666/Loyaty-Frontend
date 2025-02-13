@@ -1,0 +1,45 @@
+/* Set editor background and text color */
+.ql-container {
+  background: #1b1b1b !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  border: none !important;
+  border-radius: 0px;
+}
+
+/* Ensure the text inside the editor is white */
+.ql-editor {
+  background: #1b1b1b !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  padding: 10px 5px 10px 5px;
+  max-height: 150px;
+}
+::placeholder {
+  color: white !important;
+}
+/* Customize the toolbar */
+.ql-toolbar {
+  background: #222 !important;
+  border: none !important;
+}
+
+/* Style buttons in the toolbar */
+.ql-toolbar button {
+  color: white !important;
+}
+.ql-toolbar button svg {
+  filter: invert(1) !important;
+}
+.ql-toolbar .ql-picker {
+  color: white !important;
+}
+
+/* Change dropdown text color */
+.ql-toolbar .ql-picker-options {
+  background: #222 !important;
+  color: white !important;
+}
+
+/* Change active option color */
+.ql-toolbar .ql-picker-item {
+  color: white !important;
+}

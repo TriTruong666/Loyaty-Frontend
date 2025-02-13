@@ -3,6 +3,7 @@ import { Toaster } from "react-hot-toast";
 import AddAccountModal from "@/components/add-account-modal";
 import DashboardHeader from "@/components/dashboard-header";
 import DashboardSidebar from "@/components/sidebar-dashboard";
+import AddProductModal from "@/components/add-product-modal";
 
 export default function DashboardLayout({
   children,
@@ -10,6 +11,7 @@ export default function DashboardLayout({
   return (
     <div className="flex min-h-screen relative overflow-hidden">
       <Toaster position="bottom-right" reverseOrder={false} />
+      <AddProductModal />
       <AddAccountModal />
       <DashboardSidebar />
       {/* Allow scrolling inside the content area */}

@@ -3,6 +3,8 @@ import { Provider } from "jotai";
 import "./globals.css";
 import localFont from "next/font/local";
 import ThemeProvider from "@/components/theme";
+import QueryProvider from "@/components/query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const interFont = localFont({
   src: "../static/fonts/Inter-VariableFont_opsz,wght.ttf",
@@ -36,7 +38,10 @@ export default function RootLayout({
         className={`${interFont.variable} ${openFont.variable} ${monseFont.variable} antialiased`}
       >
         <Provider>
-          <ThemeProvider>{children}</ThemeProvider>{" "}
+          <QueryProvider>
+            <ReactQueryDevtools initialIsOpen={false} />
+            <ThemeProvider>{children}</ThemeProvider>
+          </QueryProvider>
         </Provider>
       </body>
     </html>

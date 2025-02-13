@@ -44,7 +44,7 @@ const NormalInput: FC<NormalInputProps> = ({
           onChange={onChange}
           disabled={disabled}
           maxLength={max}
-          className="placeholder:text-normal placeholder:text-opacity-10 outline-none bg-transparent border-none w-full text-sm 2xl:text-[13px] disabled:opacity-50 disabled:cursor-not-allowed"
+          className="placeholder:!text-normal placeholder:text-opacity-10 outline-none bg-transparent border-none w-full text-sm 2xl:text-[13px] disabled:opacity-50 disabled:cursor-not-allowed"
         />
       </div>
     </div>
