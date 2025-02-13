@@ -30,13 +30,13 @@ export default function DashboardSidebar() {
           />
         </div>
         <div className="py-2">
-          <MainMenuForAdmin />
+          <UserMenu />
         </div>
         {/* <div className="border-t border-gray-400-40 pb-2">
           <MenuOnlyForCEO />
         </div> */}
         <div className="border-t border-gray-400-40">
-          <MenuOnlyForCEO />
+          <UtilityItem />
         </div>
       </div>
       <p className="text-center text-primary font-light text-[11px] pb-4">

@@ -11,13 +11,16 @@ import {
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
-  DropdownSection,
   DropdownItem,
 } from "@heroui/dropdown";
 import { IoCheckmarkSharp } from "react-icons/io5";
 import { showToast } from "@/hooks/useToast";
+import LoadingScreen from "../loading";
 export default function CEOPermissionPage() {
   return (
+    // <>
+    //   <LoadingScreen />
+    // </>
     <div className="flex flex-col font-open py-[20px] ">
       <div className="flex flex-col gap-y-[5px] px-[40px]">
         <p className="text-[28px] font-light select-none">Xét duyệt đăng ký</p>

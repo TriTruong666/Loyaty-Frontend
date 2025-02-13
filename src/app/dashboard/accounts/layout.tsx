@@ -2,8 +2,10 @@
 import { AccountRoleMenu } from "@/components/account-role-menu";
 import { addAccountModalState } from "@/context/modalState";
 import { useSetAtom } from "jotai";
+import { Suspense } from "react";
 import { HiPlusSmall } from "react-icons/hi2";
 import { PiExport } from "react-icons/pi";
+import LoadingTable from "./loading";
 
 export default function AccountDashboardLayout({
   children,
@@ -40,7 +42,9 @@ export default function AccountDashboardLayout({
       </div>
 
       <AccountRoleMenu />
-      <div className="">{children}</div>
+      <Suspense fallback={<LoadingTable />}>
+        <div className="">{children}</div>
+      </Suspense>
     </div>
   );
 }

@@ -4,6 +4,8 @@ import AddAccountModal from "@/components/add-account-modal";
 import DashboardHeader from "@/components/dashboard-header";
 import DashboardSidebar from "@/components/sidebar-dashboard";
 import AddProductModal from "@/components/add-product-modal";
+import { Suspense } from "react";
+import DashboardLoading from "./loading";
 
 export default function DashboardLayout({
   children,
@@ -14,10 +16,11 @@ export default function DashboardLayout({
       <AddProductModal />
       <AddAccountModal />
       <DashboardSidebar />
-      {/* Allow scrolling inside the content area */}
       <div className="flex flex-col w-[calc(100vw-270px)] h-screen">
         <DashboardHeader />
-        <div className="flex-1 overflow-auto">{children}</div>
+        <Suspense fallback={<DashboardLoading />}>
+          <div className="flex-1 overflow-auto">{children}</div>
+        </Suspense>
       </div>
     </div>
   );

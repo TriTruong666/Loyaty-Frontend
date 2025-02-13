@@ -5,9 +5,11 @@ import woman from "@/static/woman-1.jpg";
 import Image from "next/image";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { Pagination } from "@heroui/pagination";
+import LoadingTable from "./loading";
 export default function AccountPage() {
   return (
     <div className="flex flex-col">
+      {/* <LoadingTable /> */}
       <AccountCompanyTable />
     </div>
   );
