@@ -1,68 +1,53 @@
 "use client";
-import {
-  Avatar,
-  Option,
-  Select,
-  ThemeProvider,
-  Typography,
-} from "@material-tailwind/react";
+import { Option, Select, ThemeProvider } from "@material-tailwind/react";
 import { selectTheme } from "@/theme/select-theme";
 import { IoIosInformationCircleOutline } from "react-icons/io";
+import { Pagination } from "@heroui/pagination";
+import { FaInbox } from "react-icons/fa";
 
-export default function OrderReturnedPage() {
+export default function OrderCanceledPage() {
   return (
     <div className="flex flex-col">
       <div className="flex items-center px-[40px] py-[20px] mt-[10px] justify-end gap-x-4">
-        <div className="w-[200px]">
+        <div className="w-[250px]">
           <ThemeProvider value={selectTheme}>
             <Select
-              label="Sort by"
+              label="Sắp xếp"
               variant="standard"
               className="font-inter font-semibold"
             >
-              <Option>By name (A → Z)</Option>
-              <Option>By name (Z → A)</Option>
+              <Option>Tên khách hàng (A → Z)</Option>
+              <Option>Tên khách hàng (Z → A)</Option>
             </Select>
           </ThemeProvider>
         </div>
-        <div className="w-[200px]">
+        <div className="w-[250px]">
           <ThemeProvider value={selectTheme}>
             <Select
-              label="Filter"
+              label="Bộ lọc"
               variant="standard"
               className="font-inter font-semibold"
             >
-              <Option>By name (A → Z)</Option>
-              <Option>By name (Z → A)</Option>
+              <Option>Bởi trạng thái</Option>
+              <Option>Bởi ID (Tăng dần)</Option>
+              <Option>Bởi ID (Giảm dần)</Option>
             </Select>
           </ThemeProvider>
         </div>
       </div>
-      <OrderReturnedTable />
+      <OrderCanceledTable />
     </div>
   );
 }
 
-function OrderReturnedTable() {
-  const rankingTheme = (title: string) => {
-    switch (title) {
-      case "gold":
-        return "bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-yellow-600 via-orange-500 to-gray-900";
-      case "bronze":
-        return "bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-[#78716C] via-black to-[#737373]";
-      case "silver":
-        return "bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-[#D6D3D1] via-[#262626] to-[#ECFCCB]";
-      default:
-        return "";
-    }
-  };
-  const statusTheme = (status: string) => {
+function OrderCanceledTable() {
+  const statusTheme = (status) => {
     switch (status) {
       case "pending":
         return "border-purple-500";
       case "processing":
         return "border-yellow-300";
-      case "delivered":
+      case "confirm":
         return "border-[#45A834]";
       case "returned":
         return "border-red-500";
@@ -70,13 +55,13 @@ function OrderReturnedTable() {
         return "";
     }
   };
-  const titleStatusTheme = (status: string) => {
+  const titleStatusTheme = (status) => {
     switch (status) {
       case "pending":
         return "text-purple-700";
       case "processing":
         return "text-yellow-400";
-      case "delivered":
+      case "confirm":
         return "text-[#45A834]";
       case "returned":
         return "text-red-500";
@@ -85,17 +70,16 @@ function OrderReturnedTable() {
     }
   };
   return (
-    <div className="flex mt-[20px]">
+    <div className="flex mt-[20px] flex-col items-center">
       <table className="flex flex-col w-full">
         <thead>
-          <tr className="grid grid-cols-12 mx-[20px] px-[30px] py-4 bg-[#111111] rounded-lg">
+          <tr className="grid grid-cols-12 mx-[20px] px-[20px] py-4 bg-[#111111] rounded-lg">
             <th className="col-span-1 text-[12px] text-normal font-light text-start">
               ID
             </th>
             <th className="col-span-3 text-[12px] text-normal font-light text-start">
               Tên Khách Hàng
             </th>
-
             <th className="col-span-2 text-[12px] text-normal font-light text-center">
               Hình Thức Thanh Toán
             </th>
@@ -114,17 +98,14 @@ function OrderReturnedTable() {
           <tr className="grid grid-cols-12 mx-[20px] px-[20px] py-4 items-center border-b border-gray-600 border-opacity-40">
             <td className="col-span-1 text-[13px]">1</td>
             <td className="col-span-3 flex items-center gap-x-2">
-              <p className="text-[13px] font-semibold">Sang</p>
+              <p className="text-[13px] font-semibold">Phuc Le</p>
             </td>
-
             <td className="col-span-2 text-[13px] text-center font-semibold">
-              Chuyen Khoan
+              Tiền Mặt
             </td>
-
             <td className="col-span-2 text-[13px] text-center font-semibold">
               50$
             </td>
-
             <td
               className={`col-span-2 flex justify-center w-fit px-3 gap-x-1 py-[2px] border ml-[60px] ${statusTheme(
                 "returned"
@@ -138,15 +119,24 @@ function OrderReturnedTable() {
                   "returned"
                 )}`}
               >
-                Đã Hủy
+                Đơn Hủy
               </p>
             </td>
-            <td className="col-span-2 text-[13px] font-semibold text-end">
-              Actions
+            <td className="flex gap-3 justify-end col-span-2 text-[13px] font-semibold text-end">
+              <FaInbox />
             </td>
           </tr>
         </tbody>
       </table>
+      <div className="mt-[20px]">
+        <Pagination
+          loop
+          showControls
+          color="default"
+          initialPage={1}
+          total={10}
+        />
+      </div>
     </div>
   );
 }
