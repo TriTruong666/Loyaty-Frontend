@@ -24,7 +24,7 @@ export default function DashboardSidebar() {
           <Image
             alt="Logo"
             src={logo}
-            className="w-[120px] h-[60px] object-cover"
+            className="w-fit h-[60px] object-cover"
           />
         </div>
         <div className="py-2">
