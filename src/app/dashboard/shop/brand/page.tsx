@@ -88,10 +88,11 @@ function ProductSection() {
         </div>
       </div>
       <div
-        className={`grid ${layout === "layout1" && "grid-cols-3 gap-[50px]"} ${
-          layout === "layout2" && "grid-cols-4 gap-[30px]"
+        className={`grid ${layout === "layout1" && "grid-cols-3 gap-[70px]"} ${
+          layout === "layout2" && "grid-cols-4 gap-[50px]"
         }  px-[40px] mt-[40px]`}
       >
+        <ProductItem />
         <ProductItem />
         <ProductItem />
         <ProductItem />
@@ -105,38 +106,29 @@ function ProductItem() {
   const layout = useAtomValue(layoutState);
 
   return (
-    <motion.div
-      whileHover={{
-        scale: 1.05,
-        boxShadow: "0px 10px 30px rgba(255, 255, 255, 0.1)",
-      }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="bg-[#18181B] rounded-[20px] py-[20px] px-[20px] gap-y-[10px] transition-all"
-    >
+    <div className="flex flex-col gap-y-[10px]">
+      <Image
+        loading="lazy"
+        alt="Product Image"
+        src={image}
+        width={316}
+        height={316}
+        className="w-full h-auto object-cover rounded-[20px]"
+      />
+
+      <p className="text-[12px] text-normal mt-2">La Roche Posay</p>
+
       <Link
         href="/dashboard/shop/brand/detail"
-        className="flex flex-col gap-y-[10px]"
+        className={`font-semibold line-clamp-2 ${
+          layout === "layout2" && "text-sm"
+        }`}
       >
-        <Image
-          loading="lazy"
-          alt="Product Image"
-          src={image}
-          width={316}
-          height={316}
-          className="w-full h-auto object-cover rounded-[20px]"
-        />
+        Sữa Rửa Mặt Và Tắm Toàn Thân Cho Da Nhạy Cảm Sebamed Liquid Face & Body
+        Wash 300ml
+      </Link>
 
-        <p className="text-[12px] text-normal mt-2">La Roche Posay</p>
-
-        <p
-          className={`font-semibold line-clamp-2 ${
-            layout === "layout2" && "text-sm"
-          }`}
-        >
-          Sữa Rửa Mặt Và Tắm Toàn Thân Cho Da Nhạy Cảm Sebamed Liquid Face &
-          Body Wash 300ml
-        </p>
-
+      <div className="flex mt-[10px] items-center justify-between">
         <p
           className={`text-primary font-semibold text-[18px] ${
             layout === "layout2" && "!text-[16px]"
@@ -144,7 +136,14 @@ function ProductItem() {
         >
           {formatPrice(400000)}
         </p>
-      </Link>
-    </motion.div>
+        <Button
+          variant="flat"
+          color="secondary"
+          size={`${layout === "layout2" && "sm"}`}
+        >
+          Thêm vào giỏ
+        </Button>
+      </div>
+    </div>
   );
 }

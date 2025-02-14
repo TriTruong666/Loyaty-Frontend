@@ -1,18 +1,22 @@
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import Link from "next/link";
-export function OrderStatusMenu() {
+export function AdminOrderStatusMenu() {
   const pathname = usePathname();
 
   const status = [
-    { name: "Chờ Xác Nhận", path: "/dashboard/orders", count: 10 },
-    { name: "Đã Xác Nhận", path: "/dashboard/orders/confirm", count: 100 },
+    { name: "Chờ Xác Nhận", path: "/dashboard/admin-orders", count: 10 },
+    {
+      name: "Đã Xác Nhận",
+      path: "/dashboard/admin-orders/confirm",
+      count: 100,
+    },
     {
       name: "Đang Giao",
-      path: "/dashboard/orders/processing",
+      path: "/dashboard/admin-orders/processing",
       count: 60,
     },
-    { name: "Đơn Hủy", path: "/dashboard/orders/canceled", count: 10 },
+    { name: "Đơn Hủy", path: "/dashboard/admin-orders/canceled", count: 10 },
   ];
 
   return (

@@ -5,7 +5,7 @@ import DashboardHeader from "@/components/dashboard-header";
 import DashboardSidebar from "@/components/sidebar-dashboard";
 import AddProductModal from "@/components/add-product-modal";
 import { Suspense } from "react";
-import DashboardLoading from "./loading";
+import DashboardLoadingLayout from "./loading";
 
 export default function DashboardLayout({
   children,
@@ -18,7 +18,7 @@ export default function DashboardLayout({
       <DashboardSidebar />
       <div className="flex flex-col w-[calc(100vw-270px)] h-screen">
         <DashboardHeader />
-        <Suspense fallback={<DashboardLoading />}>
+        <Suspense fallback={<DashboardLoadingLayout />}>
           <div className="flex-1 overflow-auto">{children}</div>
         </Suspense>
       </div>

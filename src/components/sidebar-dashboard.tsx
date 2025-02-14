@@ -44,6 +44,44 @@ export default function DashboardSidebar() {
   );
 }
 
+function StaffMenu() {
+  const menu = [
+    {
+      name: "Tổng quan",
+      icon: RiLineChartLine,
+      path: "/dashboard",
+    },
+    {
+      name: "Đơn hàng",
+      icon: LuFileText,
+      path: "/dashboard/admin-orders",
+      typography: 10,
+    },
+    {
+      name: "Thông báo",
+      icon: PiNotification,
+      path: "/dashboard/notification",
+      typography: 3,
+    },
+  ];
+
+  return (
+    <div className="flex flex-col">
+      <p className="text-normal text-[12px] px-6 py-4">Menu</p>
+      <div className="flex flex-col gap-y-3 mb-2">
+        {menu.map((item, i) => (
+          <MenuItem
+            key={i}
+            icon={item.icon}
+            name={item.name}
+            path={item.path}
+            typography={item.typography}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 function MainMenuForAdmin() {
   const menu = [
     {
@@ -64,7 +102,7 @@ function MainMenuForAdmin() {
     {
       name: "Đơn hàng",
       icon: LuFileText,
-      path: "/dashboard/orders",
+      path: "/dashboard/admin-orders",
       typography: 10,
     },
     {
@@ -227,7 +265,7 @@ function UserMenu() {
     {
       name: "Đơn hàng",
       icon: LuFileText,
-      path: "/dashboard/orders",
+      path: "/dashboard/user-orders",
       typography: 10,
     },
     {

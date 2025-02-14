@@ -5,7 +5,7 @@ import { useSetAtom } from "jotai";
 import { Suspense } from "react";
 import { HiPlusSmall } from "react-icons/hi2";
 import { PiExport } from "react-icons/pi";
-import LoadingTable from "./loading";
+import AccountLoadingTableLayout from "./loading";
 
 export default function AccountDashboardLayout({
   children,
@@ -42,7 +42,7 @@ export default function AccountDashboardLayout({
       </div>
 
       <AccountRoleMenu />
-      <Suspense fallback={<LoadingTable />}>
+      <Suspense fallback={<AccountLoadingTableLayout />}>
         <div className="">{children}</div>
       </Suspense>
     </div>

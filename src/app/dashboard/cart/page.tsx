@@ -89,16 +89,10 @@ function CartItem() {
               <p className="text-[20px]">-</p>
             </Button>
           </div>
-          <Select
-            variant="underlined"
-            size="sm"
-            className="w-[100px]"
-            placeholder="Đơn vị"
-          >
-            {units.map((unit) => (
-              <SelectItem key={unit.key}>{unit.label}</SelectItem>
-            ))}
-          </Select>
+          <p className="text-normal text-sm">
+            Đơn vị tính:{" "}
+            <span className="font-bold text-foreground">Thùng</span>
+          </p>
         </div>
       </div>
       <div className="flex flex-col justify-between w-[30%] items-end">

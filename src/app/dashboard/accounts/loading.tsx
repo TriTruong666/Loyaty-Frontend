@@ -1,16 +1,9 @@
-"use client";
+import { LoadingTable } from "@/components/loading";
 
-import Lottie from "lottie-react";
-import loadingAnimation from "@/static/loading/loading3.json";
-
-export default function LoadingTable() {
+export default function AccountLoadingTableLayout() {
   return (
-    <div className="flex flex-col items-center justify-center h-[550px] bg-black">
-      <Lottie
-        animationData={loadingAnimation}
-        loop={true}
-        className="w-[150px] h-[150px]"
-      />
-    </div>
+    <>
+      <LoadingTable />
+    </>
   );
 }

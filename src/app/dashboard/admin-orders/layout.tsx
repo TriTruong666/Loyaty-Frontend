@@ -1,5 +1,6 @@
 "use client";
-import { OrderStatusMenu } from "@/components/order-status-menu";
+
+import { AdminOrderStatusMenu } from "@/components/order-status-menu";
 
 export default function OrderDashboardLayout({
   children,
@@ -10,12 +11,12 @@ export default function OrderDashboardLayout({
         <div className="flex flex-col gap-y-[5px]">
           <p className="text-[28px] font-light select-none">Đơn Hàng</p>
           <p className="text-sm text-normal">
-            Xem các đơn hàng của bạn, có thể in hoặc xem chi tiết.
+            Quản lý đơn hàng của Loyalty, theo dõi và cập nhật trạng thái.
           </p>
         </div>
       </div>
 
-      <OrderStatusMenu />
+      <AdminOrderStatusMenu />
       <div className="">{children}</div>
     </div>
   );

@@ -1,16 +1,9 @@
-"use client";
+import { DashboardLoading } from "@/components/loading";
 
-import Lottie from "lottie-react";
-import loadingAnimation from "@/static/loading/loading2.json";
-
-export default function DashboardLoading() {
+export default function DashboardLoadingLayout() {
   return (
-    <div className="flex flex-col items-center justify-center h-[calc(100vh-80px)] bg-black">
-      <Lottie
-        animationData={loadingAnimation}
-        loop={true}
-        className="w-[150px] h-[150px]"
-      />
-    </div>
+    <>
+      <DashboardLoading />
+    </>
   );
 }
