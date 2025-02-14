@@ -4,6 +4,14 @@ import { selectTheme } from "@/theme/select-theme";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { Pagination } from "@heroui/pagination";
 import { FaInbox } from "react-icons/fa";
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+} from "@heroui/dropdown";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { Button } from "@heroui/button";
 
 export default function OrderProcessingPage() {
   return (
@@ -122,8 +130,26 @@ function OrderProcessingTable() {
                 Đang Giao
               </p>
             </td>
-            <td className="flex gap-3 justify-end col-span-2 text-[13px] font-semibold text-end">
-              <FaInbox />
+            <td className="col-span-2 text-[13px] font-semibold flex justify-end">
+              <Dropdown>
+                <DropdownTrigger>
+                  <Button isIconOnly size="sm" variant="light">
+                    <BsThreeDotsVertical className="text-normal text-[16px]" />
+                  </Button>
+                </DropdownTrigger>
+                <DropdownMenu>
+                  <DropdownItem
+                    className="group"
+                    color="default"
+                    startContent={
+                      <FaInbox className="text-[16px] group-hover:text-success" />
+                    }
+                    key="show"
+                  >
+                    <p className="group-hover:text-success">Chi tiết</p>
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
             </td>
           </tr>
         </tbody>

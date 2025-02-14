@@ -1,6 +1,8 @@
 "use client";
 
 import { AdminOrderStatusMenu } from "@/components/order-status-menu";
+import { Suspense } from "react";
+import AdminOrderLoadingTableLayout from "./loading";
 
 export default function OrderDashboardLayout({
   children,
@@ -17,7 +19,9 @@ export default function OrderDashboardLayout({
       </div>
 
       <AdminOrderStatusMenu />
-      <div className="">{children}</div>
+      <Suspense fallback={<AdminOrderLoadingTableLayout />}>
+        <div className="">{children}</div>
+      </Suspense>
     </div>
   );
 }
