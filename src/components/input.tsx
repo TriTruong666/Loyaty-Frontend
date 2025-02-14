@@ -4,13 +4,13 @@ interface NormalInputProps {
   icon: ReactNode;
   type?: string;
   placeholder?: string;
-  value: string | number;
-  defaultValue: string | number;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string | number; // ✅ Make 'value' optional
+  defaultValue?: string | number; // ✅ Make 'defaultValue' optional
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void; // ✅ Make 'onChange' optional
   disabled?: boolean;
   label?: string;
   max?: number;
-  name: string;
+  name?: string; // ✅ Make 'name' optional
 }
 
 const NormalInput: FC<NormalInputProps> = ({
