@@ -1,0 +1,18 @@
+{
+  "productId": "EAC001",
+  "productName": "EASYDEW EX UV CONTROL VELVET PRIMER 40ML",
+  "unit": "Tuýp",
+  "price": 825000,
+  "brand": {
+    "brandId": "EASYDE",
+    "brandName": "EASYDEW",
+    "handle": "easydew"
+  },
+  "handle": "EASYDEW EX UV CONTROL VELVET PRIMER 40ML",
+  "imageUrl": "EAC001",
+  "description": "",
+  "createdBy": null,
+  "createdDate": null,
+  "updateBy": null,
+  "updateDate": null
+}

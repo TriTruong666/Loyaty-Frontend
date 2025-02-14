@@ -15,6 +15,8 @@ import {
 import { Button } from "@heroui/button";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { showToast } from "@/hooks/useToast";
+import { useAllProduct, useGetProductByLimit } from "@/hooks/useQuery";
+import { formatPrice } from "@/utils/format";
 
 export default function ProductPage() {
   return (
@@ -52,7 +54,8 @@ export default function ProductPage() {
 }
 
 function ProductTable() {
-  const statusTheme = (status) => {
+  const { data: products } = useGetProductByLimit();
+  const statusTheme = (status: string) => {
     switch (status) {
       case "inactive":
         return "border-gray-400-40";
@@ -65,7 +68,7 @@ function ProductTable() {
     }
   };
 
-  const titleStatusTheme = (status) => {
+  const titleStatusTheme = (status: string) => {
     switch (status) {
       case "inactive":
         return "text-normal";
@@ -104,83 +107,92 @@ function ProductTable() {
           </tr>
         </thead>
         <tbody>
-          <tr className="grid grid-cols-12 mx-[20px] px-[20px] py-4 items-center border-b border-gray-600 border-opacity-40">
-            <td className="col-span-1 text-[13px]">1</td>
-            <td className="col-span-3 flex items-center gap-x-2">
-              <Image
-                alt=""
-                src={woman}
-                className="w-[35px] h-[35px] object-cover rounded-full"
-              />
-              <div className="flex flex-col">
-                <p className="text-[13px] font-semibold">Kem Dưỡng Da</p>
-              </div>
-            </td>
-            <td className="col-span-2 text-[11px] font-semibold">Easydew</td>
-            <td className="col-span-2 text-[13px] text-center font-semibold">
-              700$
-            </td>
-            <td
-              className={`col-span-2 flex justify-center w-fit px-3 gap-x-1 py-[2px] border ml-[60px] ${statusTheme(
-                "active"
-              )} rounded-lg`}
+          {products?.map((item, i) => (
+            <tr
+              key={item.productId}
+              className="grid grid-cols-12 mx-[20px] px-[20px] py-4 items-center border-b border-gray-600 border-opacity-40"
             >
-              <IoIosInformationCircleOutline
-                className={`${titleStatusTheme("active")}`}
-              />
-              <p
-                className={`text-[11px] font-semibold font-open ${titleStatusTheme(
+              <td className="col-span-1 text-[13px]">{item.productId}</td>
+              <td className="col-span-3 flex items-center gap-x-2">
+                <Image
+                  alt=""
+                  src={woman}
+                  className="w-[35px] h-[35px] object-cover rounded-full"
+                />
+                <div className="flex flex-col">
+                  <p className="text-[13px] font-semibold">
+                    {item.productName}
+                  </p>
+                </div>
+              </td>
+              <td className="col-span-2 text-[11px] font-semibold">
+                {item.brand.brandName}
+              </td>
+              <td className="col-span-2 text-[13px] text-center font-semibold">
+                {formatPrice(item.price)}
+              </td>
+              <td
+                className={`col-span-2 flex justify-center w-fit px-3 gap-x-1 py-[2px] border ml-[60px] ${statusTheme(
                   "active"
-                )}`}
+                )} rounded-lg`}
               >
-                Đang Bán
-              </p>
-            </td>
-            <td className="col-span-2 text-[13px] font-semibold flex justify-end">
-              <Dropdown>
-                <DropdownTrigger>
-                  <Button isIconOnly size="sm" variant="light">
-                    <BsThreeDotsVertical className="text-normal text-[16px]" />
-                  </Button>
-                </DropdownTrigger>
-                <DropdownMenu>
-                  <DropdownItem
-                    className="group"
-                    color="default"
-                    startContent={
-                      <FaEdit className="text-[16px] group-hover:text-success" />
-                    }
-                    key="approve"
-                  >
-                    <p className="group-hover:text-success">Chỉnh sửa</p>
-                  </DropdownItem>
-                  <DropdownItem
-                    onPress={() =>
-                      showToast("Sản phẩm đã hết hàng!", "success")
-                    }
-                    className="group"
-                    color="default"
-                    startContent={
-                      <FaPowerOff className="text-[16px] group-hover:text-success" />
-                    }
-                    key="deny"
-                  >
-                    <p className="group-hover:text-success">Hết Hàng</p>
-                  </DropdownItem>
-                  <DropdownItem
-                    className="group"
-                    color="default"
-                    startContent={
-                      <FaInbox className="text-[16px] group-hover:text-success" />
-                    }
-                    key="show"
-                  >
-                    <p className="group-hover:text-success">Chi tiết</p>
-                  </DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
-            </td>
-          </tr>
+                <IoIosInformationCircleOutline
+                  className={`${titleStatusTheme("active")}`}
+                />
+                <p
+                  className={`text-[11px] font-semibold font-open ${titleStatusTheme(
+                    "active"
+                  )}`}
+                >
+                  Đang Bán
+                </p>
+              </td>
+              <td className="col-span-2 text-[13px] font-semibold flex justify-end">
+                <Dropdown>
+                  <DropdownTrigger>
+                    <Button isIconOnly size="sm" variant="light">
+                      <BsThreeDotsVertical className="text-normal text-[16px]" />
+                    </Button>
+                  </DropdownTrigger>
+                  <DropdownMenu>
+                    <DropdownItem
+                      className="group"
+                      color="default"
+                      startContent={
+                        <FaEdit className="text-[16px] group-hover:text-success" />
+                      }
+                      key="approve"
+                    >
+                      <p className="group-hover:text-success">Chỉnh sửa</p>
+                    </DropdownItem>
+                    <DropdownItem
+                      onPress={() =>
+                        showToast("Sản phẩm đã hết hàng!", "success")
+                      }
+                      className="group"
+                      color="default"
+                      startContent={
+                        <FaPowerOff className="text-[16px] group-hover:text-success" />
+                      }
+                      key="deny"
+                    >
+                      <p className="group-hover:text-success">Hết Hàng</p>
+                    </DropdownItem>
+                    <DropdownItem
+                      className="group"
+                      color="default"
+                      startContent={
+                        <FaInbox className="text-[16px] group-hover:text-success" />
+                      }
+                      key="show"
+                    >
+                      <p className="group-hover:text-success">Chi tiết</p>
+                    </DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
       <div className="mt-[20px]">

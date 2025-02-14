@@ -20,7 +20,7 @@ import { TbCoins, TbTruck } from "react-icons/tb";
 
 export default function CheckoutPage() {
   return (
-    <div className="flex flex-col p-[50px] w-screen overflow-x-hidden bg-background font-open">
+    <div className="flex flex-col p-[30px] w-screen overflow-x-hidden bg-background font-open">
       <Link
         color="foreground"
         href="/dashboard/cart"
@@ -29,7 +29,7 @@ export default function CheckoutPage() {
         <IoIosArrowRoundBack className="text-[20px]" />
         <p className="font-light">Quay lại giỏ hàng</p>
       </Link>
-      <div className="flex mt-[50px] gap-x-[30px] justify-between">
+      <div className="flex mt-[20px] gap-x-[30px] justify-between">
         {/* infomation */}
         <div className="flex flex-col w-[70%] gap-y-[30px] pr-[50px] border-r border-gray-400-40">
           <InfomationForm />

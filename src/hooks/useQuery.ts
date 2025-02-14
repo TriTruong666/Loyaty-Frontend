@@ -1,6 +1,7 @@
+import { Product } from "@/interfaces/Product";
 import { useQuery, UseQueryOptions } from "@tanstack/react-query";
-
-export default function useFetch<T>(
+import * as ProductService from "@/service/product/productService";
+function useFetch<T>(
   queryKey: any[],
   queryFn: () => Promise<T>,
   options?: UseQueryOptions<T>
@@ -12,4 +13,16 @@ export default function useFetch<T>(
   });
 
   return { data, isLoading, isError, error, refetch, isFetching };
+}
+
+export function useAllProduct() {
+  return useFetch<Product[]>(["products"], async () =>
+    ProductService.getAllProductService()
+  );
+}
+
+export function useGetProductByLimit() {
+  return useFetch<Product[]>(["products"], async () =>
+    ProductService.getProductServiceByLimit()
+  );
 }
