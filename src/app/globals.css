@@ -22,3 +22,23 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+html {
+  scroll-behavior: smooth;
+}
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 0; /* Adjust scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+  background: #111; /* Dark track background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #444; /* Scrollbar color */
+  border-radius: 10px; /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4a4a4a; /* Slightly lighter when hovered */
+}

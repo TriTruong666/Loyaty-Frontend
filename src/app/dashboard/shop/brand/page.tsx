@@ -2,7 +2,6 @@
 import { selectTheme } from "@/theme/select-theme";
 import { Button, ButtonGroup } from "@heroui/button";
 import { Option, Select, ThemeProvider } from "@material-tailwind/react";
-import Link from "next/link";
 import { GrFormPreviousLink } from "react-icons/gr";
 import { RiLayoutGrid2Line } from "react-icons/ri";
 import { TfiLayoutGrid4 } from "react-icons/tfi";
@@ -11,6 +10,8 @@ import Image from "next/image";
 import { formatPrice } from "@/utils/format";
 import { atom, useAtom, useAtomValue } from "jotai";
 import { motion } from "framer-motion";
+import { Link as HeroLink } from "@heroui/link";
+import Link from "next/link";
 const layoutState = atom("layout1");
 export default function BrandProductShopPage() {
   return (
@@ -23,10 +24,10 @@ export default function BrandProductShopPage() {
             <span className="font-bold text-primary">La Roche Posay</span>
           </p>
         </div>
-        <Link href="/dashboard/shop" className="flex items-center gap-x-2">
+        <HeroLink href="/dashboard/shop" className="flex items-center gap-x-2">
           <GrFormPreviousLink className="text-[18px] text-normal" />
           <p className="text-sm text-normal">Xem nhãn hàng khác</p>
-        </Link>
+        </HeroLink>
       </div>
       <div className="flex-1">
         <ProductSection />
@@ -120,7 +121,7 @@ function ProductItem() {
 
       <Link
         href="/dashboard/shop/brand/detail"
-        className={`font-semibold line-clamp-2 ${
+        className={`font-semibold text-foreground duration-300 transition-all hover:text-primary line-clamp-2 ${
           layout === "layout2" && "text-sm"
         }`}
       >

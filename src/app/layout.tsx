@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${interFont.variable} ${openFont.variable} ${monseFont.variable} antialiased`}
+        className={`${interFont.variable} ${openFont.variable} ${monseFont.variable} overflow-x-hidden antialiased`}
       >
         <Provider>
           <QueryProvider>

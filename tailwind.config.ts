@@ -8,7 +8,7 @@ export default withMT({
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@heroui/theme/dist/components/(alert|button|date-picker|dropdown|image|link|pagination|select|ripple|spinner|calendar|date-input|form|popover|menu|divider|listbox|scroll-shadow).js"
+    "./node_modules/@heroui/theme/dist/components/(alert|button|date-picker|dropdown|image|input|link|pagination|select|ripple|spinner|calendar|date-input|form|popover|menu|divider|listbox|scroll-shadow).js"
   ],
   theme: {
     extend: {

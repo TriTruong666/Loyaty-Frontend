@@ -5,6 +5,7 @@ interface NormalInputProps {
   type?: string;
   placeholder?: string;
   value: string | number;
+  defaultValue: string | number;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
   label?: string;
@@ -17,6 +18,7 @@ const NormalInput: FC<NormalInputProps> = ({
   type = "text",
   placeholder = "",
   value,
+  defaultValue,
   onChange,
   name,
   disabled = false,
@@ -40,6 +42,7 @@ const NormalInput: FC<NormalInputProps> = ({
           type={type}
           name={name}
           placeholder={placeholder}
+          defaultValue={defaultValue}
           value={value}
           onChange={onChange}
           disabled={disabled}

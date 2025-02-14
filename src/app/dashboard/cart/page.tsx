@@ -36,6 +36,10 @@ export default function CartPage() {
               <p className="font-bold">-11,330,000₫</p>
             </div>
             <div className="flex justify-between">
+              <p className="font-light text-normal">Hạng Loyalty</p>
+              <p className="font-bold">Gold</p>
+            </div>
+            <div className="flex justify-between">
               <p className="font-semibold text-normal">Tổng</p>
               <p className="font-bold text-primary">101,970,000₫</p>
             </div>

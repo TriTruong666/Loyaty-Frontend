@@ -1,6 +1,5 @@
 "use client";
 import { FaUserTag, FaBuilding } from "react-icons/fa6";
-import RadioButton from "./radio-button";
 import { FaUserCheck } from "react-icons/fa";
 import { atom, useAtom, useAtomValue, useSetAtom } from "jotai";
 import { addAccountModalState } from "@/context/modalState";
@@ -13,6 +12,8 @@ import { RiBuilding2Fill } from "react-icons/ri";
 import { Select, SelectItem } from "@heroui/select";
 import { IoIosPin } from "react-icons/io";
 import { Button } from "@heroui/button";
+import { GrUserWorker } from "react-icons/gr";
+import { ReactNode } from "react";
 
 const createAccountProgress = atom(1);
 const selectedAccountType = atom("");
@@ -60,6 +61,16 @@ function ChooseAccountType() {
           value="sales"
           selected={selected}
           onChange={setSelected}
+          name="accountType"
+        />
+        <RadioButton
+          icon={<GrUserWorker size={24} />}
+          title="Tài khoản nhân viên"
+          description="Tài khoản nhân viên quản lý đơn hàng"
+          value="staff"
+          selected={selected}
+          onChange={setSelected}
+          name="accountType"
         />
         <RadioButton
           icon={<FaUserCheck size={24} />}
@@ -68,6 +79,7 @@ function ChooseAccountType() {
           value="personal"
           selected={selected}
           onChange={setSelected}
+          name="accountType"
         />
         <RadioButton
           icon={<FaBuilding size={24} />}
@@ -76,6 +88,7 @@ function ChooseAccountType() {
           value="business"
           selected={selected}
           onChange={setSelected}
+          name="accountType"
         />
       </div>
       <div className="flex items-center w-full mt-[20px] gap-x-4">
@@ -149,7 +162,7 @@ function RegistrationForm() {
           >
             Ngày sinh
           </label>
-          <DatePicker variant="bordered" />
+          <DatePicker variant="underlined" />
         </div>
       </div>
       <div className="flex items-center w-full mt-[20px] gap-x-4">
@@ -212,7 +225,11 @@ function LocationForm() {
         >
           Tỉnh / Thành phố
         </label>
-        <Select variant="bordered" placeholder="Tỉnh / Thành phố">
+        <Select
+          isVirtualized
+          variant="underlined"
+          placeholder="Tỉnh / Thành phố"
+        >
           {animals.map((animal) => (
             <SelectItem key={animal.key}>{animal.label}</SelectItem>
           ))}
@@ -225,7 +242,12 @@ function LocationForm() {
         >
           Quận / Huyện
         </label>
-        <Select variant="bordered" placeholder="Quận / Huyện" isDisabled>
+        <Select
+          isVirtualized
+          variant="underlined"
+          placeholder="Quận / Huyện"
+          isDisabled
+        >
           {animals.map((animal) => (
             <SelectItem key={animal.key}>{animal.label}</SelectItem>
           ))}
@@ -238,7 +260,12 @@ function LocationForm() {
         >
           Phường / Xã
         </label>
-        <Select variant="bordered" placeholder="Phường / Xã" isDisabled>
+        <Select
+          isVirtualized
+          variant="underlined"
+          placeholder="Phường / Xã"
+          isDisabled
+        >
           {animals.map((animal) => (
             <SelectItem key={animal.key}>{animal.label}</SelectItem>
           ))}
@@ -272,3 +299,48 @@ function LocationForm() {
     </div>
   );
 }
+
+interface RadioButtonProps {
+  icon: ReactNode;
+  title: string;
+  description: string;
+  value: string;
+  selected: string;
+  onChange: (value: string) => void;
+  name: string;
+}
+
+const RadioButton: React.FC<RadioButtonProps> = ({
+  icon,
+  title,
+  description,
+  value,
+  selected,
+  onChange,
+  name,
+}) => {
+  return (
+    <label
+      className={`flex items-center w-full p-4 border rounded-lg cursor-pointer transition-all ${
+        selected === value
+          ? "border-white bg-gray-600 bg-opacity-10"
+          : "border-gray-400-40"
+      }`}
+      onClick={() => onChange(value)}
+    >
+      <input
+        type="radio"
+        name={name}
+        value={value}
+        checked={selected === value}
+        onChange={() => onChange(value)}
+        className="hidden"
+      />
+      <div className="mr-4 text-primary">{icon}</div>
+      <div className="flex flex-col">
+        <p className="text-lg font-semibold">{title}</p>
+        <p className="text-sm text-gray-400">{description}</p>
+      </div>
+    </label>
+  );
+};
