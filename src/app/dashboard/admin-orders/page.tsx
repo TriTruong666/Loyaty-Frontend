@@ -3,8 +3,18 @@ import { Option, Select, ThemeProvider } from "@material-tailwind/react";
 import { selectTheme } from "@/theme/select-theme";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { Pagination } from "@heroui/pagination";
-import { FaCheck } from "react-icons/fa";
+import { FaInbox } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+} from "@heroui/dropdown";
+import { Button } from "@heroui/button";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { showToast } from "@/hooks/useToast";
+import { IoCheckmarkSharp } from "react-icons/io5";
 
 export default function OrderPage() {
   return (
@@ -123,9 +133,52 @@ function AllOrderTable() {
                 Chờ Duyệt
               </p>
             </td>
-            <td className="flex gap-3 justify-end col-span-2 text-[13px] font-semibold text-end">
-              <FaCheck />
-              <FaXmark />
+            <td className="col-span-2 text-[13px] font-semibold flex justify-end">
+              <Dropdown>
+                <DropdownTrigger>
+                  <Button isIconOnly size="sm" variant="light">
+                    <BsThreeDotsVertical className="text-normal text-[16px]" />
+                  </Button>
+                </DropdownTrigger>
+                <DropdownMenu>
+                  <DropdownItem
+                    onPress={() =>
+                      showToast("Đơn hàng đã được duyệt!", "success")
+                    }
+                    className="group"
+                    color="default"
+                    startContent={
+                      <IoCheckmarkSharp className="text-[16px] group-hover:text-success" />
+                    }
+                    key="approve"
+                  >
+                    <p className="group-hover:text-success">Xác Nhận</p>
+                  </DropdownItem>
+                  <DropdownItem
+                    onPress={() =>
+                      showToast("Đơn hàng đã bị từ chối!", "success")
+                    }
+                    className="group"
+                    color="default"
+                    startContent={
+                      <FaXmark className="text-[16px] group-hover:text-success" />
+                    }
+                    key="deny"
+                  >
+                    <p className="group-hover:text-success">Từ chối</p>
+                  </DropdownItem>
+                  <DropdownItem
+                    className="group"
+                    color="default"
+                    startContent={
+                      <FaInbox className="text-[16px] group-hover:text-success" />
+                    }
+                    key="show"
+                  >
+                    <p className="group-hover:text-success">Chi tiết</p>
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
             </td>
           </tr>
         </tbody>

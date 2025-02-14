@@ -5,7 +5,16 @@ import woman from "@/static/woman-1.jpg";
 import Image from "next/image";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { Pagination } from "@heroui/pagination";
-import { VscDebugRestart } from "react-icons/vsc";
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+} from "@heroui/dropdown";
+import { Button } from "@heroui/button";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { FaEdit, FaInbox, FaPowerOff } from "react-icons/fa";
+import { showToast } from "@/hooks/useToast";
 
 export default function ProductInactivePage() {
   return (
@@ -127,8 +136,49 @@ function ProductTable() {
                 Hết Hàng
               </p>
             </td>
-            <td className="flex justify-end col-span-2 text-[13px] font-semibold text-end">
-              <VscDebugRestart />
+            <td className="col-span-2 text-[13px] font-semibold flex justify-end">
+              <Dropdown>
+                <DropdownTrigger>
+                  <Button isIconOnly size="sm" variant="light">
+                    <BsThreeDotsVertical className="text-normal text-[16px]" />
+                  </Button>
+                </DropdownTrigger>
+                <DropdownMenu>
+                  <DropdownItem
+                    className="group"
+                    color="default"
+                    startContent={
+                      <FaEdit className="text-[16px] group-hover:text-success" />
+                    }
+                    key="approve"
+                  >
+                    <p className="group-hover:text-success">Chỉnh sửa</p>
+                  </DropdownItem>
+                  <DropdownItem
+                    onPress={() =>
+                      showToast("Sản phẩm đã được bán lại!", "success")
+                    }
+                    className="group"
+                    color="default"
+                    startContent={
+                      <FaPowerOff className="text-[16px] group-hover:text-success" />
+                    }
+                    key="deny"
+                  >
+                    <p className="group-hover:text-success">Bán lại</p>
+                  </DropdownItem>
+                  <DropdownItem
+                    className="group"
+                    color="default"
+                    startContent={
+                      <FaInbox className="text-[16px] group-hover:text-success" />
+                    }
+                    key="show"
+                  >
+                    <p className="group-hover:text-success">Chi tiết</p>
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
             </td>
           </tr>
         </tbody>

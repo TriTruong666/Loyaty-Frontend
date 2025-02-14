@@ -1,26 +1,48 @@
-import woman from "@/static/woman-1.jpg";
+import mypham from "@/static/mypham.png";
 import Image from "next/image";
+import { FaStar } from "react-icons/fa";
+
 export default function ProductDetailPage() {
   return (
-    <div className="flex flex-col px-[40px]">
+    <div className="flex flex-col px-10 py-6 space-y-10 ">
+      {/* Sản phẩm */}
       <div className="flex gap-10">
-        {/* image */}
-        <Image className="h-[450px] w-[1000px]" alt="" src={woman} />
-        {/* content */}
-        <div className="flex flex-col">
-          <p>EasyDew</p>
-          <p className="font-bold text-[20px]">
+        {/* Ảnh sản phẩm */}
+        <div className="w-[700px] h-[500px] overflow-hidden rounded-lg">
+          <Image
+            className="w-full h-full object-cover"
+            alt="Mỹ phẩm"
+            src={mypham}
+          />
+        </div>
+
+        {/* Nội dung sản phẩm */}
+        <div className="flex flex-col w-full">
+          <p className="text-lg font-medium text-gray-600">EasyDew</p>
+          <h1 className="font-bold text-3xl leading-snug">
             Dầu Xả Giúp Tăng Cường Dưỡng Tóc, Ngăn Ngừa Và Cải Thiện Giảm Gãy
             Rụng Tóc Vichy Dercos Technique Energising Anti-Hair Loss
             Conditioner 200ML
-          </p>
-          <p className="text-[30px] mt-[30px]">415,000₫</p>
-          <button className="">Mua Ngay</button>
+          </h1>
+
+          {/* Giá */}
+          <p className="text-5xl font-bold text-red-600 mt-4">415,000₫</p>
+
+          {/* Button */}
+          <div className="flex gap-5 mt-6">
+            <button className="px-6 py-3 text-white bg-red-500 hover:bg-red-600 text-lg font-medium rounded-lg shadow-md">
+              Mua Ngay
+            </button>
+            <button className="px-6 py-3 text-red-500 border border-red-500 hover:bg-red-100 text-lg font-medium rounded-lg shadow-md">
+              Thêm Vào Giỏ Hàng
+            </button>
+          </div>
         </div>
       </div>
-      <div className="flex flex-col">
-        <p>Mo ta</p>
-        <p>
+      {/* Mô tả sản phẩm */}
+      <div className=" p-5 rounded-lg">
+        <h2 className="text-2xl font-bold mb-3 border-b-1">Mô Tả Sản Phẩm</h2>
+        <p className="text-white-700 leading-relaxed">
           Dầu Xả Giúp Tăng Cường Dưỡng Tóc, Ngăn Ngừa Và Cải Thiện Giảm Gãy Rụng
           Tóc Vichy Dercos Technique Energising Anti-Hair Loss Conditioner cung
           cấp các dưỡng chất cần thiết cho tóc, giúp tóc phục hồi và giảm gãy
@@ -34,7 +56,6 @@ export default function ProductDetailPage() {
           do các tác nhân như uốn, duỗi, nhuộm, thay đổi hóc môn, stress,.. –
           Picare là nhà phân phối chính hãng của Vichy tại Việt Nam.
         </p>
-        {/* content */}
       </div>
     </div>
   );

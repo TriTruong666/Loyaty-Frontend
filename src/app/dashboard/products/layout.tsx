@@ -2,8 +2,10 @@
 import { ProductStatusMenu } from "@/components/products-status-menu";
 import { addProductModalState } from "@/context/modalState";
 import { useSetAtom } from "jotai";
+import { Suspense } from "react";
 import { HiPlusSmall } from "react-icons/hi2";
 import { PiExport } from "react-icons/pi";
+import ProductLoadingTableLayout from "./loading";
 
 export default function ProductDashboardLayout({
   children,
@@ -38,7 +40,9 @@ export default function ProductDashboardLayout({
       </div>
 
       <ProductStatusMenu />
-      <div className="">{children}</div>
+      <Suspense fallback={<ProductLoadingTableLayout />}>
+        <div className="">{children}</div>
+      </Suspense>
     </div>
   );
 }
