@@ -23,11 +23,7 @@ export default function LoginHeader() {
     <div className="flex items-center justify-between px-6 py-2 border-b border-gray-400 border-opacity-40">
       {/* Logo */}
       <div className="flex items-center">
-        <Image
-          src={logo2}
-          alt="Logo"
-          className="w-[120px] h-[60px] object-cover"
-        />
+        <Image src={logo2} alt="Logo" className="w-fit h-[60px] object-cover" />
       </div>
 
       {pathName === "/reset" ? (
