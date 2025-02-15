@@ -10,19 +10,18 @@ export default function AccountSalesPage() {
     <div className="flex flex-col">
       <div className="flex items-center px-[40px] py-[20px] mt-[10px] justify-end gap-x-4">
         <div className="w-[250px]">
-          <ThemeProvider value={selectTheme}>
+          {/* <ThemeProvider value={selectTheme}>
             <Select
               label="Sắp xếp"
               variant="standard"
-              className="font-inter font-semibold"
-            >
+              className="font-inter font-semibold" children={undefined} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}            >
               <Option>Tên khách hàng (A → Z)</Option>
               <Option>Tên khách hàng (Z → A)</Option>
             </Select>
-          </ThemeProvider>
+          </ThemeProvider> */}
         </div>
         <div className="w-[250px]">
-          <ThemeProvider value={selectTheme}>
+          {/* <ThemeProvider value={selectTheme}>
             <Select
               label="Bộ lọc"
               variant="standard"
@@ -32,7 +31,7 @@ export default function AccountSalesPage() {
               <Option>Bởi ID (Tăng dần)</Option>
               <Option>Bởi ID (Giảm dần)</Option>
             </Select>
-          </ThemeProvider>
+          </ThemeProvider> */}
         </div>
       </div>
       <AccountSalesTable />
@@ -41,18 +40,6 @@ export default function AccountSalesPage() {
 }
 
 function AccountSalesTable() {
-  const rankingTheme = (title: string) => {
-    switch (title) {
-      case "gold":
-        return "bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-yellow-600 via-orange-500 to-gray-900";
-      case "bronze":
-        return "bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-[#78716C] via-black to-[#737373]";
-      case "silver":
-        return "bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-[#D6D3D1] via-[#262626] to-[#ECFCCB]";
-      default:
-        return "";
-    }
-  };
   const statusTheme = (status: string) => {
     switch (status) {
       case "inactive":

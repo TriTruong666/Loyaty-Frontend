@@ -18,7 +18,7 @@ export default function OrderCanceledPage() {
     <div className="flex flex-col">
       <div className="flex items-center px-[40px] py-[20px] mt-[10px] justify-end gap-x-4">
         <div className="w-[250px]">
-          <ThemeProvider value={selectTheme}>
+          {/* <ThemeProvider value={selectTheme}>
             <Select
               label="Sắp xếp"
               variant="standard"
@@ -27,10 +27,10 @@ export default function OrderCanceledPage() {
               <Option>Tên khách hàng (A → Z)</Option>
               <Option>Tên khách hàng (Z → A)</Option>
             </Select>
-          </ThemeProvider>
+          </ThemeProvider> */}
         </div>
         <div className="w-[250px]">
-          <ThemeProvider value={selectTheme}>
+          {/* <ThemeProvider value={selectTheme}>
             <Select
               label="Bộ lọc"
               variant="standard"
@@ -40,7 +40,7 @@ export default function OrderCanceledPage() {
               <Option>Bởi ID (Tăng dần)</Option>
               <Option>Bởi ID (Giảm dần)</Option>
             </Select>
-          </ThemeProvider>
+          </ThemeProvider> */}
         </div>
       </div>
       <OrderCanceledTable />

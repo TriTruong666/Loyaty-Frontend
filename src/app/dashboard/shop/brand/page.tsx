@@ -62,7 +62,7 @@ function ProductSection() {
         </div>
         <div className="flex gap-x-4">
           <div className="w-[250px]">
-            <ThemeProvider value={selectTheme}>
+            {/* <ThemeProvider value={selectTheme}>
               <Select
                 label="Sắp xếp"
                 variant="standard"
@@ -71,10 +71,10 @@ function ProductSection() {
                 <Option>Tên khách hàng (A → Z)</Option>
                 <Option>Tên khách hàng (Z → A)</Option>
               </Select>
-            </ThemeProvider>
+            </ThemeProvider> */}
           </div>
           <div className="w-[250px]">
-            <ThemeProvider value={selectTheme}>
+            {/* <ThemeProvider value={selectTheme}>
               <Select
                 label="Bộ lọc"
                 variant="standard"
@@ -84,7 +84,7 @@ function ProductSection() {
                 <Option>Bởi ID (Tăng dần)</Option>
                 <Option>Bởi ID (Giảm dần)</Option>
               </Select>
-            </ThemeProvider>
+            </ThemeProvider> */}
           </div>
         </div>
       </div>
@@ -137,11 +137,7 @@ function ProductItem() {
         >
           {formatPrice(400000)}
         </p>
-        <Button
-          variant="flat"
-          color="secondary"
-          size={`${layout === "layout2" && "sm"}`}
-        >
+        <Button variant="flat" color="secondary" size="md">
           Thêm vào giỏ
         </Button>
       </div>

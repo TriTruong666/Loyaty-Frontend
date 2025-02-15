@@ -5,7 +5,8 @@ export const useTheme = () => {
   const [theme, setTheme] = useState<string>("light");
 
   useEffect(() => {
-    // Check localStorage for saved theme
+    if (typeof window === "undefined") return; // ✅ Prevents SSR issues
+
     const storedTheme = localStorage.getItem("theme");
     const systemPrefersDark = window.matchMedia(
       "(prefers-color-scheme: dark)"
@@ -18,6 +19,8 @@ export const useTheme = () => {
 
   const toggleTheme = () => {
     setTheme((prevTheme) => {
+      if (typeof window === "undefined") return prevTheme; // ✅ Prevent SSR errors
+
       const newTheme = prevTheme === "dark" ? "light" : "dark";
       localStorage.setItem("theme", newTheme);
       document.documentElement.classList.toggle("dark", newTheme === "dark");

@@ -1,3 +1,5 @@
+"use client";
+
 import { uploadFileService } from "@/service/cloudinary/uploadService";
 import { Button } from "@heroui/button";
 import { useMutation } from "@tanstack/react-query";

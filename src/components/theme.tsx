@@ -1,4 +1,4 @@
-"use client";
+"use client"; // ✅ Ensure this is a Client Component
 import { useTheme } from "@/hooks/useTheme";
 
 export default function ThemeProvider({
@@ -6,7 +6,7 @@ export default function ThemeProvider({
 }: {
   children: React.ReactNode;
 }) {
-  useTheme();
+  useTheme(); // ✅ Now safe because we check for `window` in `useTheme`
 
   return <>{children}</>;
 }

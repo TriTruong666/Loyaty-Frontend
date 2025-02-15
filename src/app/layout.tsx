@@ -7,21 +7,24 @@ import QueryProvider from "@/components/query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const interFont = localFont({
-  src: "../static/fonts/Inter-VariableFont_opsz,wght.ttf",
+  src: "/fonts/Inter-VariableFont_opsz,wght.ttf", // ✅ Correct path
   variable: "--font-inter",
   weight: "100 900",
+  preload: true,
 });
 
 const openFont = localFont({
-  src: "../static/fonts/OpenSans-VariableFont_wdth,wght.ttf",
+  src: "/fonts/OpenSans-VariableFont_wdth,wght.ttf", // ✅ Correct path
   variable: "--font-open-sans",
   weight: "100 900",
+  preload: true,
 });
 
 const monseFont = localFont({
-  src: "../static/fonts/Montserrat-VariableFont_wght.ttf",
+  src: "/fonts/Montserrat-VariableFont_wght.ttf", // ✅ Correct path
   variable: "--font-monse",
   weight: "100 900",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -39,8 +42,12 @@ export default function RootLayout({
       >
         <Provider>
           <QueryProvider>
-            <ReactQueryDevtools initialIsOpen={false} />
-            <ThemeProvider>{children}</ThemeProvider>
+            <ThemeProvider>
+              {" "}
+              {/* ✅ ThemeProvider is placed inside <body> */}
+              <ReactQueryDevtools initialIsOpen={false} />
+              <div className="">{children}</div>
+            </ThemeProvider>
           </QueryProvider>
         </Provider>
       </body>

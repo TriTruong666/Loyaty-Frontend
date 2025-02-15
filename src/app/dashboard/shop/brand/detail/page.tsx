@@ -1,10 +1,10 @@
+"use client";
 import mypham from "@/static/mypham.png";
 import Image from "next/image";
-import { FaStar } from "react-icons/fa";
 
 export default function ProductDetailPage() {
   return (
-    <div className="flex flex-col px-10 py-6 space-y-10 ">
+    <div className="flex flex-col px-10 py-6 space-y-10">
       {/* Sản phẩm */}
       <div className="flex gap-10">
         {/* Ảnh sản phẩm */}
@@ -39,10 +39,13 @@ export default function ProductDetailPage() {
           </div>
         </div>
       </div>
+
       {/* Mô tả sản phẩm */}
-      <div className=" p-5 rounded-lg">
-        <h2 className="text-2xl font-bold mb-3 border-b-1">Mô Tả Sản Phẩm</h2>
-        <p className="text-white-700 leading-relaxed">
+      <div className="p-5 rounded-lg">
+        <h2 className="text-2xl font-bold mb-3 border-b border-gray-300">
+          Mô Tả Sản Phẩm
+        </h2>
+        <p className="text-gray-700 leading-relaxed">
           Dầu Xả Giúp Tăng Cường Dưỡng Tóc, Ngăn Ngừa Và Cải Thiện Giảm Gãy Rụng
           Tóc Vichy Dercos Technique Energising Anti-Hair Loss Conditioner cung
           cấp các dưỡng chất cần thiết cho tóc, giúp tóc phục hồi và giảm gãy

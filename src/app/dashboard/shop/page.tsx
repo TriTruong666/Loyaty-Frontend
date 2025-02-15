@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import brand from "@/static/brand.png";
 import brand2 from "@/static/brand2.png";
