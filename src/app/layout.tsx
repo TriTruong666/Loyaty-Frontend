@@ -1,30 +1,25 @@
 import type { Metadata } from "next";
 import { Provider } from "jotai";
+import { Inter, Open_Sans, Montserrat } from "next/font/google"; // Import Google Fonts
 import "./globals.css";
-import localFont from "next/font/local";
 import ThemeProvider from "@/components/theme";
 import QueryProvider from "@/components/query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-const interFont = localFont({
-  src: "/fonts/Inter-VariableFont_opsz,wght.ttf", // ✅ Correct path
+const interFont = Inter({
+  subsets: ["latin"],
   variable: "--font-inter",
-  weight: "100 900",
-  preload: true,
+  weight: ["100", "900"],
 });
-
-const openFont = localFont({
-  src: "/fonts/OpenSans-VariableFont_wdth,wght.ttf", // ✅ Correct path
+const openFont = Open_Sans({
+  subsets: ["latin"],
   variable: "--font-open-sans",
-  weight: "100 900",
-  preload: true,
+  weight: ["300", "800"],
 });
-
-const monseFont = localFont({
-  src: "/fonts/Montserrat-VariableFont_wght.ttf", // ✅ Correct path
+const monseFont = Montserrat({
+  subsets: ["latin"],
   variable: "--font-monse",
-  weight: "100 900",
-  preload: true,
+  weight: ["100", "900"],
 });
 
 export const metadata: Metadata = {
@@ -38,16 +33,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${interFont.variable} ${openFont.variable} ${monseFont.variable} overflow-x-hidden antialiased`}
+        className={`${interFont.variable} ${openFont.variable} ${monseFont.variable} antialiased`}
       >
         <Provider>
           <QueryProvider>
-            <ThemeProvider>
-              {" "}
-              {/* ✅ ThemeProvider is placed inside <body> */}
-              <ReactQueryDevtools initialIsOpen={false} />
-              <div className="">{children}</div>
-            </ThemeProvider>
+            <ReactQueryDevtools initialIsOpen={false} />
+            <ThemeProvider>{children}</ThemeProvider>
           </QueryProvider>
         </Provider>
       </body>
