@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Provider } from "jotai";
 import { Inter, Open_Sans, Montserrat } from "next/font/google"; // Import Google Fonts
 import "./globals.css";
-import ThemeProvider from "@/components/theme";
 import QueryProvider from "@/components/query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
@@ -38,7 +37,7 @@ export default function RootLayout({
         <Provider>
           <QueryProvider>
             <ReactQueryDevtools initialIsOpen={false} />
-            <ThemeProvider>{children}</ThemeProvider>
+            <div>{children}</div>
           </QueryProvider>
         </Provider>
       </body>

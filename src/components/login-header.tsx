@@ -4,14 +4,12 @@ import Link from "next/link";
 import { MdOutlineNavigateNext } from "react-icons/md";
 import { BsMoonStarsFill, BsSunFill } from "react-icons/bs";
 import logo2 from "@/static/logo-dark2.png";
-import { useTheme } from "@/hooks/useTheme";
 import { usePathname } from "next/navigation";
 import { useSetAtom } from "jotai";
 import { resetProgressState } from "@/context/resetState";
 import { loginProgressState } from "@/context/homeState";
 
 export default function LoginHeader() {
-  const { theme, toggleTheme } = useTheme();
   const pathName = usePathname();
   const setResetState = useSetAtom(resetProgressState);
   const setLoginState = useSetAtom(loginProgressState);
@@ -41,16 +39,6 @@ export default function LoginHeader() {
             Sign in
           </Link>
           <MdOutlineNavigateNext className="text-primary text-[24px] 2xl:text-[20px]" />
-          <button
-            onClick={toggleTheme}
-            className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-400 dark:border-white bg-gray-200 dark:bg-gray-900 transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-700"
-          >
-            {theme === "dark" ? (
-              <BsSunFill className="text-yellow-500 text-xl" />
-            ) : (
-              <BsMoonStarsFill className="text-gray-800 text-xl" />
-            )}
-          </button>
         </div>
       ) : (
         <div className="flex items-center space-x-5">
@@ -65,16 +53,6 @@ export default function LoginHeader() {
             Reset account
           </Link>
           <MdOutlineNavigateNext className="text-primary text-[24px] 2xl:text-[20px]" />
-          <button
-            onClick={toggleTheme}
-            className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-400 dark:border-white bg-gray-200 dark:bg-gray-900 transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-700"
-          >
-            {theme === "dark" ? (
-              <BsSunFill className="text-yellow-500 text-xl" />
-            ) : (
-              <BsMoonStarsFill className="text-gray-800 text-xl" />
-            )}
-          </button>
         </div>
       )}
     </div>
